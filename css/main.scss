@@ -7,8 +7,6 @@
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
         "bootstrap",
-        "bootswatch"
+        "bootswatch",
+        "base"
 ;
-
-// TODO put this in a base.scss
-body { padding-top: 70px; }

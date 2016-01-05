@@ -1,0 +1,49 @@
+// Logo
+#logo {
+	height: 155px;
+}
+
+// Navigation
+.navbar-default .navbar-toggle{
+	border-color: transparent;
+}
+
+
+// START - Sticky Navigation
+// http://codepen.io/Guilh/pen/JLKbn
+// https://teamtreehouse.com/community/forum-tip-create-a-sticky-navigation-with-css-and-jquery-2
+
+body {
+  margin: 0;
+  padding-top: 155px + 30px;
+}
+
+header {
+  height: 155px;
+  padding-top: 15px;
+}
+
+.navbar,
+.main {
+  position: relative; 
+}
+.navbar {
+  margin-bottom: -70px;
+}
+
+header,
+.main-nav-scrolled {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+.main {
+  background: #f2f2e8;
+  padding-top: 70px;
+}
+// END - Sticky Navigation
+
+// Buttons
+.navbar-btn {
+	margin-left: 15px;
+}
