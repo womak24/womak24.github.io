@@ -8,7 +8,6 @@
 	border-color: transparent;
 }
 
-
 // START - Sticky Navigation
 // http://codepen.io/Guilh/pen/JLKbn
 // https://teamtreehouse.com/community/forum-tip-create-a-sticky-navigation-with-css-and-jquery-2
@@ -46,4 +45,19 @@ header,
 // Buttons
 .navbar-btn {
 	margin-left: 15px;
+}
+
+// Slogan
+
+h1.slogan {
+  font-size: 18px;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid $brand-primary;
+}
+
+h2.slogan {
+  font-size: 18px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
