@@ -11,13 +11,13 @@ $bootstrap-sass-asset-helper: false !default;
 $gray-base:              #000 !default;
 $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
 $gray-dark:              #7b8a8b !default;   // #333
-$gray:                   #95a5a6 !default; // #555
+$gray:                   #404040 !default; // Schriftfarbe (grau)
 $gray-light:             #b4bcc2 !default;   // #999
 $gray-lighter:           #ecf0f1 !default; // #eee
 
-$brand-primary:         #2C3E50 !default;
-$brand-success:         #18BC9C !default;
-$brand-info:            #3498DB !default;
+$brand-primary:         #3880C2 !default; // Blau I (dunkel)
+$brand-success:         #F39C12 !default; // Orange
+$brand-info:            #FFFFFF !default; // White
 $brand-warning:         #F39C12 !default;
 $brand-danger:          #E74C3C !default;
 
@@ -29,7 +29,7 @@ $brand-danger:          #E74C3C !default;
 //** Background color for `<body>`.
 $body-bg:               #fff !default;
 //** Global text color on `<body>`.
-$text-color:            $brand-primary !default;
+$text-color:            $gray !default;
 
 //** Global textual link color.
 $link-color:            $brand-success !default;
@@ -157,7 +157,7 @@ $btn-success-color:              $btn-default-color !default;
 $btn-success-bg:                 $brand-success !default;
 $btn-success-border:             $btn-success-bg !default;
 
-$btn-info-color:                 $btn-default-color !default;
+$btn-info-color:                 $gray !default;
 $btn-info-bg:                    $brand-info !default;
 $btn-info-border:                $btn-info-bg !default;
 
@@ -365,7 +365,7 @@ $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
 $navbar-collapse-max-height:       340px !default;
 
-$navbar-default-color:             #777 !default;
+$navbar-default-color:             #FFF !default;
 $navbar-default-bg:                $brand-primary !default;
 $navbar-default-border:            transparent !default;
 
