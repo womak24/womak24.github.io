@@ -1,7 +1,34 @@
+// Teaser - Responsive Circle
+
+.resp-circle:after {
+  background-color: $brand-primary;
+  content: "";
+  display: block;
+  width: 100%;
+  height:0;
+  padding-bottom: 100%;
+  -moz-border-radius: 50%; 
+  -webkit-border-radius: 50%; 
+  border-radius: 50%;
+}
+.resp-circle div {
+  float:left;
+  width:100%;
+  color: $brand-info;
+  font-size: $font-size-base * 4;
+}
+
+.bubble-icon {
+  background-color: $brand-primary;
+}
+
+
 // Logo
 #logo {
 	height: 155px;
 }
+
+
 
 // Navigation
 .navbar-default .navbar-toggle{
