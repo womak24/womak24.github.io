@@ -127,10 +127,26 @@ h4 {
   border-bottom: $border-width solid $gray-light;
 }
 
+// Teaser
+.teaser {
+  text-align: center;
+
+  .fa-circle {
+    color: $brand-primary;
+  }
+}
+
+.teaser-item { // duplicated with first-footer-item, do different
+  margin-bottom: 2 * $line-height-computed;
+}
+
 // First Footer
 .first-footer {
-  padding-bottom: $line-height-computed;
   color: $gray-light;
+}
+
+.first-footer-item {
+  margin-bottom: 2 * $line-height-computed;
 }
 
 // Secondary Footer

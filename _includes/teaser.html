@@ -1,10 +1,14 @@
-<div class="container">
+<div class="container teaser">
   <div class="row">
     {% for post in site.categories.home %}
-      <div class="col-md-3">
-        <i class="fa {{ post.icon }}"></i>
+      <div class="col-lg-3 col-sm-6 teaser-item">
+        <span class="fa-stack fa-3x">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa {{ post.icon }} fa-stack-1x fa-inverse"></i>
+        </span>
         <h3>{{ post.name }}</h3>
-        <p>{{ post.text }}
+        <p>{{ post.text }}</p>
+        <a href="{{ post.link }}">Mehr erfahren<i class="fa fa-fw fa-angle-double-right"></i></a>
       </div>
     {% endfor %}
   </div>
