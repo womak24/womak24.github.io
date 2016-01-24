@@ -1,3 +1,5 @@
+$border-width: 3px;
+
 // Logo
 #logo {
 	height: 155px;
@@ -116,7 +118,22 @@ h2.slogan {
   right: 30px;
 }
 
-// Footer
+// Headings
+
+// H3 - grey (footer)
+h4 {
+  @extend .text-uppercase;
+  color: $gray-light;
+  border-bottom: $border-width solid $gray-light;
+}
+
+// First Footer
+.first-footer {
+  padding-bottom: $line-height-computed;
+  color: $gray-light;
+}
+
+// Secondary Footer
 .secondary-footer {
   background-color: $brand-primary;
   color: white;
@@ -141,7 +158,7 @@ h2.slogan {
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: $screen-lg-min) {
-  // Footer
+  // Secondary Footer
   .secondary-footer-left { float: left; }
   .secondary-footer-right { float: right; }
 }
