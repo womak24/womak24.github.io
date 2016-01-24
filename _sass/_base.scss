@@ -120,7 +120,12 @@ h2.slogan {
 
 // Headings
 
-// H3 - grey (footer)
+// H3 - teaser
+h3 {
+  @extend .text-uppercase;
+}
+
+// H4 - grey (footer)
 h4 {
   @extend .text-uppercase;
   color: $gray-light;
