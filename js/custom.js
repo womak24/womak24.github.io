@@ -12,3 +12,36 @@ $(window).scroll(function() {
     mn.removeClass(mns);
   }
 });
+
+
+$(document).ready(function(){
+  $('.slider').slick({
+    dots: true,
+    centerMode: true,
+    centerPadding: '0px',
+    autoplay: false,
+    autoplaySpeed: 6000,
+    
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: true,
+          centerMode: true,
+          centerPadding: '0px',
+          dots: true
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: true,
+          centerMode: true,
+          centerPadding: '0px',
+          dots: false,
+        }
+      }
+    ]
+  });
+});
+

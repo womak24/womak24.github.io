@@ -1,34 +1,7 @@
-// Teaser - Responsive Circle
-
-.resp-circle:after {
-  background-color: $brand-primary;
-  content: "";
-  display: block;
-  width: 100%;
-  height:0;
-  padding-bottom: 100%;
-  -moz-border-radius: 50%; 
-  -webkit-border-radius: 50%; 
-  border-radius: 50%;
-}
-.resp-circle div {
-  float:left;
-  width:100%;
-  color: $brand-info;
-  font-size: $font-size-base * 4;
-}
-
-.bubble-icon {
-  background-color: $brand-primary;
-}
-
-
 // Logo
 #logo {
 	height: 155px;
 }
-
-
 
 // Navigation
 .navbar-default .navbar-toggle{
@@ -54,7 +27,7 @@ header {
   position: relative; 
 }
 .navbar {
-  margin-bottom: -70px;
+  margin-bottom: -60px;
 }
 
 header,
@@ -74,17 +47,78 @@ header,
 	margin-left: 15px;
 }
 
+.btn-group {
+  margin-top: $line-height-computed;
+}
+
 // Slogan
 
 h1.slogan {
   font-size: $font-size-large;
   margin-top: $line-height-computed;
-  padding-bottom: $line-height-computed;
+  padding-bottom: $line-height-computed/2 - 1;
   border-bottom: 2px solid $brand-primary;
 }
 
 h2.slogan {
   font-size: $font-size-large;
-  margin-top: $line-height-computed;
+  margin-top: $line-height-computed/2 - 1;
   margin-bottom: $line-height-computed;
+}
+
+// Slider
+#slider {
+  background-color: grey;
+  border-top: 2px solid $brand-primary;
+
+  img {
+    width: 100%;
+  }
+
+  .tmp {
+    position: relative;
+    width: 100%;
+
+    .tmp-content {
+      top: $line-height-computed;
+      left: 0px;
+      width: 100%;
+      position: absolute;
+
+      h4 {
+        span {
+          background: white;
+          padding: 2px;
+        }
+      }
+
+      span {
+        background: white;
+        padding: 2px;
+      }
+      span.spacer {
+        padding:0 2px;
+      }
+    }
+  }
+}
+
+.slick-next, .slick-prev {
+  top: -21px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+.slick-prev {
+  left: initial;
+  right: 30px;
+}
+
+
+// Headings
+h4 {
+  @extend .text-uppercase;
+  color: $brand-primary;
 }

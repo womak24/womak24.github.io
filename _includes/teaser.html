@@ -1,9 +1,11 @@
-<div class="row">
-  {% for post in site.posts %}
-    <div class="col-md-3">
-      <i class="fa {{ post.icon }}"></i>
-      <h3>{{ post.name }}</h3>
-      <p>{{ post.text }}
-    </div>
-  {% endfor %}
+<div class="container">
+  <div class="row">
+    {% for post in site.categories.home %}
+      <div class="col-md-3">
+        <i class="fa {{ post.icon }}"></i>
+        <h3>{{ post.name }}</h3>
+        <p>{{ post.text }}
+      </div>
+    {% endfor %}
+  </div>
 </div>
