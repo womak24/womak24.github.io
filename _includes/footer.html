@@ -1,5 +1,43 @@
 <footer>
-
-Das wird der Footer.
-
+  <div class="container">
+    <div class="row">
+      {% for post in site.categories.footer %}
+        <div class="col-md-3">
+          <h3>{{ post.heading }}</h3>
+          <ul class="list-unstyled">
+            <li>{{ post.text1}}</li>
+            <li>{{ post.text2}}</li>
+            <li>{{ post.text3}}</li>
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="secondary-footer">
+    <div class="container visible-xs-block">
+      <ul class="list-unstyled">
+        <li><a href="#">Impressum</a></li>
+        <li><a href="#">Datenschutz</a></li>
+        <li><a href="#">Wiederrufsrecht</a></li>
+      </ul>
+      <ul class="list-unstyled">
+        <li>© 2016</li>
+        <li>WOMAK 24 GmbH Berlin-Brandenburg Versicherungsmakler</li>
+      </ul>
+    </div>
+    <div class="container hidden-xs">
+      <ul class="list-inline secondary-footer-right">
+        <li><a href="#">Impressum</a></li>
+        <li>|</li>
+        <li><a href="#">Datenschutz</a></li>
+        <li>|</li>
+        <li><a href="#">Wiederrufsrecht</a></li>
+      </ul>
+      <ul class="list-inline secondary-footer-left">
+        <li>© 2016</li>
+        <li>|</li>
+        <li>WOMAK 24 GmbH Berlin-Brandenburg Versicherungsmakler</li>
+      </ul>
+    </div>
+  </div>
 </footer>

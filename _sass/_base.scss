@@ -116,9 +116,32 @@ h2.slogan {
   right: 30px;
 }
 
+// Footer
+.secondary-footer {
+  background-color: $brand-primary;
+  color: white;
+  padding-top: $line-height-computed;
+  padding-bottom: $line-height-computed;
+  text-align: center;
 
-// Headings
-h4 {
-  @extend .text-uppercase;
-  color: $brand-primary;
+  a { color: white; }
+}
+
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min) {
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) {
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: $screen-lg-min) {
+  // Footer
+  .secondary-footer-left { float: left; }
+  .secondary-footer-right { float: right; }
 }
