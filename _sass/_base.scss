@@ -152,6 +152,13 @@ h4 {
 
 .first-footer-item {
   margin-bottom: 2 * $line-height-computed;
+
+  // make line over whole screen
+  padding: 0;
+  h4, ul {
+    padding-left: $padding-base-horizontal;
+    padding-right: $padding-base-horizontal;
+  }
 }
 
 // Secondary Footer
@@ -171,6 +178,18 @@ h4 {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
+
+  .first-footer-item {
+    // change back: make line over whole screen
+    padding-left: $padding-base-horizontal;
+    padding-right: $padding-base-horizontal;
+
+    h4, ul {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
 }
 
 /* Medium devices (desktops, 992px and up) */
