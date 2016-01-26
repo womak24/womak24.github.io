@@ -1,10 +1,10 @@
-<div class="hidden-xs tagline text-right">
+<header class="hidden-xs tagline text-right">
   <div class="container">
     <a href="#" class="btn btn-success btn-sm navbar-btn"><i class="fa fa-bolt"></i> Schaden melden</button>
     <a href="tel:0049353348260" class="btn btn-info btn-sm navbar-btn"><i class="fa fa-phone"></i> 03533 48260</a>
     <a href="mailto:info@womak24.de" class="btn btn-info btn-sm navbar-btn"><i class="fa fa-envelope-o"></i> info@womak24.de</a>
   </div>
-</div>
+</header>
 
 <header class="visible-xs">
   <div class="container">
@@ -12,31 +12,37 @@
   </div>
 </header>
 
-<nav class="navbar navbar-default visible-xs navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
       <div class="navbar-header">
+        <a class="navbar-brand hidden-xs hidden-sm" href="#">
+          <img alt="Womak 24 GmbH" src="img/womak-logo_medium-rgb-72dpi.png">
+        </a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-txt">MENÜ</span><i class="fa fa-lg fa-bars"></i>
         </button>
-        <button type="button" class="btn btn-success btn-sm navbar-btn"><i class="fa fa-bolt"></i> Schaden melden</button>
+        <button type="button" class="btn btn-success btn-sm navbar-btn visible-xs"><i class="fa fa-bolt"></i> Schaden melden</button>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li>
+          <li class="visible-xs">
             <p class="navbar-btn">
               <a href="tel:0049353348260" class="btn btn-info btn-sm"><i class="fa fa-phone"></i> 03533 48260</a>
             </p>
           </li>
-          <li>
+          <li class="visible-xs">
             <p class="navbar-btn">
               <a href="mailto:info@womak24.de" class="btn btn-info btn-sm"><i class="fa fa-envelope-o"></i> info@womak24.de</a>
             </p>
           </li>
-          <li><a href="#">Über uns</a></li>
+          <li><a href="#"><i class="fa fa-2x fa-info hidden-xs hidden-sm"></i> Über uns</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Unsere Dienstleistungen <span class="caret"></span></a>
+            {% comment %} Desktop Version (menu on hover) {% endcomment %}
+            <a href="#" class="dropdown-toggle hidden-xs" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs hidden-sm"></i> Unsere Dienstleistungen <span class="caret"></span></a>
+            {% comment %} Mobile Version (menu on klick) {% endcomment %}
+            <a href="#" class="visible-xs dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs hidden-sm"></i> Unsere Dienstleistungen <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">Risikoanalyse&nbsp;&amp;&nbsp;Beratung</a></li>
               <li><a href="#">Immobilienversicherungen</a></li>
@@ -47,9 +53,9 @@
               <li><a href="#">Weitere Dienstleistungen</a></li>
             </ul>
           </li>
-          <li><a href="#">Qualitätssiegel</a></li>
-          <li><a href="#">Onlinemagazin</a></li>
-          <li><a href="#">Kontakt</a></li>
+          <li><a href="#"><i class="fa fa-2x fa-certificate hidden-xs hidden-sm"></i> Qualitätssiegel</a></li>
+          <li><a href="#"><i class="fa fa-2x fa-newspaper-o hidden-xs hidden-sm"></i> Onlinemagazin</a></li>
+          <li><a href="#"><i class="fa fa-2x fa-paper-plane hidden-xs hidden-sm"></i> Kontakt</a></li>
         </ul>
       </div>
   </div>

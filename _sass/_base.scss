@@ -5,6 +5,7 @@ $border-width: 3px;
 
 // Logo
 #logo { max-height: 155px; }
+.navbar-brand img { height: 5 * $line-height-computed; }
 
 // Navigation
 .navbar-default .navbar-toggle{
@@ -42,6 +43,12 @@ header,
   top: 0;
   width: 100%;
 }
+
+.main-nav-scrolled {
+    opacity: 0.90;
+    border-bottom: 1px solid $text-color;
+}
+
 .main {
   background: #fff;
   padding-top: 70px;
@@ -91,12 +98,14 @@ h2.slogan {
 
     span {
       background: white;
+      opacity: 0.9;
       padding: 2px;
     }
   }
 
   span {
     background: white;
+    opacity: 0.9;
     padding: 2px;
   }
   span.spacer {
@@ -140,11 +149,17 @@ h2.slogan {
 // H3 - teaser
 h3 { @extend .text-uppercase; }
 
-// H4 - grey (footer)
+// H4 normal
 h4 {
   @extend .text-uppercase;
-  border-bottom: $border-width solid $gray-light;
-  color: $gray-light;
+  border-bottom: $border-width solid $brand-primary;
+  color: $brand-primary;
+
+  // grey h4 in footer
+  .first-footer & {
+    border-color: $gray-light;
+    color: $gray-light;
+  }
 }
 
 // Teaser
@@ -157,11 +172,23 @@ h4 {
 // duplicated with first-footer-item, do different
 .teaser-item { margin-bottom: 2 * $line-height-computed; }
 
+// Schaden
+.schaden {
+  color: white;
+  margin-bottom: 2 * $line-height-computed;
+}
+
+.schaden-content,
+.schaden-img {
+  background-color: $brand-primary;
+}
+
 // First Footer
 .first-footer { color: $gray-light; }
 
 .first-footer-item {
   margin-bottom: 2 * $line-height-computed;
+  margin-top: 2 * $line-height-computed;
 
   // make line over whole screen, when smaller than sm-device
   padding: 0;
@@ -199,11 +226,74 @@ h4 {
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
 
-  // resetting sticky nav for smartphone version
-  body {
-    margin: 0;
-    padding-top: 0px;
+// START - Sticky Navigation
+// http://codepen.io/Guilh/pen/JLKbn
+// https://teamtreehouse.com/community/forum-tip-create-a-sticky-navigation-with-css-and-jquery-2
+
+body {
+  padding-top: 60px; // height of tagline
+}
+
+header {
+  height: 60px; // height of tagline
+  padding-top: 0px;
+}
+
+.navbar {
+  margin-bottom: -126px; // height of navigation
+}
+
+.main {
+  padding-top: 126px + $line-height-computed; // height of navigation
+}
+
+.navbar-default.main-nav-scrolled {
+  height: 4 * $line-height-computed;
+  border-bottom: 1px solid $brand-primary;
+  opacity: 0.95;
+
+  .navbar-brand {
+    padding-top: $line-height-computed/2;
   }
+
+  img { height: 3 * $line-height-computed; }
+
+  .navbar-nav > li > a {
+    margin-top: $line-height-computed/2;
+
+    i {
+        display: none;
+    }
+  }
+}
+
+// END - Sticky Navigation
+
+
+  // Navigation in Desktop-Version
+  .navbar-default {
+    background-color: white;
+    height: (5+1) * $line-height-computed;
+
+    .navbar-nav > li > a {
+        color: $text-color;
+        margin-top: 2 * $line-height-computed;
+
+        &:hover, &:focus { color: $brand-primary; }
+
+        i {
+          display: block;
+          text-align: center;
+        }
+    }
+  }
+
+  // Dropdown in Nav on hover instead of click
+  // http://stackoverflow.com/questions/16214326/bootstrap-dropdown-with-hover
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
 
   // Slider
   .slider-immo,
