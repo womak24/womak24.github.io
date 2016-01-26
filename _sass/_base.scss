@@ -1,14 +1,10 @@
 $border-width: 3px;
 
 // Logo
-#logo {
-	height: 155px;
-}
+#logo { height: 155px; }
 
 // Navigation
-.navbar-default .navbar-toggle{
-	border-color: transparent;
-}
+.navbar-default .navbar-toggle{ border-color: transparent; }
 
 // START - Sticky Navigation
 // http://codepen.io/Guilh/pen/JLKbn
@@ -28,15 +24,13 @@ header {
 .main {
   position: relative; 
 }
-.navbar {
-  margin-bottom: -60px;
-}
+.navbar { margin-bottom: -60px; }
 
 header,
 .main-nav-scrolled {
   position: fixed;
-  width: 100%;
   top: 0;
+  width: 100%;
 }
 .main {
   background: #fff;
@@ -45,116 +39,123 @@ header,
 // END - Sticky Navigation
 
 // Buttons
-.navbar-btn {
-	margin-left: 15px;
-}
+.navbar-btn { margin-left: 15px; }
 
-.btn-group {
-  margin-top: $line-height-computed;
-}
+// helper class for putting distance between objects and buttons
+.btn-group { margin-top: $line-height-computed; }
 
 // Slogan
 
 h1.slogan {
+  border-bottom: 2px solid $brand-primary;
   font-size: $font-size-large;
   margin-top: $line-height-computed;
   padding-bottom: $line-height-computed/2 - 1;
-  border-bottom: 2px solid $brand-primary;
 }
 
 h2.slogan {
   font-size: $font-size-large;
-  margin-top: $line-height-computed/2 - 1;
   margin-bottom: $line-height-computed;
+  margin-top: $line-height-computed/2 - 1;
 }
 
 // Slider
-#slider {
-  background-color: grey;
-  border-top: 2px solid $brand-primary;
 
-  img {
-    width: 100%;
-  }
+.slider {
+  padding-bottom: 2 * $line-height-computed;
 
-  .tmp {
-    position: relative;
-    width: 100%;
-
-    .tmp-content {
-      top: $line-height-computed;
-      left: 0px;
-      width: 100%;
-      position: absolute;
-
-      h4 {
-        span {
-          background: white;
-          padding: 2px;
-        }
-      }
-
-      span {
-        background: white;
-        padding: 2px;
-      }
-      span.spacer {
-        padding:0 2px;
-      }
-    }
+  h4 {
+    border: none;
+    color: $brand-primary;
   }
 }
 
-.slick-next, .slick-prev {
+.slider-content {
+  border-top: $border-width solid $brand-primary;
+
+  h4 {
+    color: $text-color;
+    font-weight: bold;
+    padding-top: $line-height-computed;
+    padding-bottom: $line-height-computed/4;
+
+    span {
+      background: white;
+      padding: 2px;
+    }
+  }
+
+  span {
+    background: white;
+    padding: 2px;
+  }
+  span.spacer {
+    padding:0 2px;
+  }
+}
+
+// default setting for smartphones greater sm-devices
+.slider-immo,
+.slider-analyse,
+.slider-do,
+.slider-lohn,
+.slider-honorar,
+.slider-weitere {
+  background-position: 25% center;
+  background-size: cover;
+  height: 200px;
+}
+
+.slider-immo { background-image: url(../img/slider-immo.png); }
+.slider-analyse { background-image: url(../img/slider-analyse.png); }
+.slider-do { background-image: url(../img/slider-do.png); }
+.slider-lohn { background-image: url(../img/slider-lohn.png); }
+.slider-honorar { background-image: url(../img/slider-honorar.png); }
+.slider-weitere { background-image: url(../img/slider-weitere.png); }
+
+.slick-next,
+.slick-prev {
   top: -21px;
 }
 
-.slick-next {
-  right: 10px;
-}
+.slick-next { right: 15px; }
 
 .slick-prev {
   left: initial;
-  right: 30px;
+  right: 40px;
 }
 
 // Headings
 
 // H3 - teaser
-h3 {
-  @extend .text-uppercase;
-}
+h3 { @extend .text-uppercase; }
 
 // H4 - grey (footer)
 h4 {
   @extend .text-uppercase;
-  color: $gray-light;
   border-bottom: $border-width solid $gray-light;
+  color: $gray-light;
 }
 
 // Teaser
 .teaser {
   text-align: center;
 
-  .fa-circle {
-    color: $brand-primary;
-  }
+  .fa-circle { color: $brand-primary; }
 }
 
-.teaser-item { // duplicated with first-footer-item, do different
-  margin-bottom: 2 * $line-height-computed;
-}
+// duplicated with first-footer-item, do different
+.teaser-item { margin-bottom: 2 * $line-height-computed; }
 
 // First Footer
-.first-footer {
-  color: $gray-light;
-}
+.first-footer { color: $gray-light; }
 
 .first-footer-item {
   margin-bottom: 2 * $line-height-computed;
 
-  // make line over whole screen
+  // make line over whole screen, when smaller than sm-device
   padding: 0;
+
   h4, ul {
     padding-left: $padding-base-horizontal;
     padding-right: $padding-base-horizontal;
@@ -172,6 +173,7 @@ h4 {
   a { color: white; }
 }
 
+// MEDIA QUERIES ***
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
@@ -179,8 +181,28 @@ h4 {
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
 
+  // Slider
+  .slider-immo,
+  .slider-analyse,
+  .slider-do,
+  .slider-lohn,
+  .slider-honorar,
+  .slider-weitere {
+    background-position: center center;
+    background-size: cover;
+    height: 300px;
+  }
+
+  .slider-content {
+    h4 {
+      font-size: $font-size-h3;
+      padding-bottom: $line-height-computed/2;
+    }
+    font-size: $font-size-large;
+  }
+
+  // change back: make line not over whole screen
   .first-footer-item {
-    // change back: make line over whole screen
     padding-left: $padding-base-horizontal;
     padding-right: $padding-base-horizontal;
 
@@ -198,6 +220,26 @@ h4 {
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: $screen-lg-min) {
+
+  // Slider
+  .slider-immo,
+  .slider-analyse,
+  .slider-do,
+  .slider-lohn,
+  .slider-honorar,
+  .slider-weitere {
+        height: 390px;
+  }
+
+  .slider-content {
+    h4 {
+      font-size: $font-size-h2;
+      padding-top: 2 * $line-height-computed;
+    }
+
+    font-size: $font-size-h2;
+  }
+
   // Secondary Footer
   .secondary-footer-left { float: left; }
   .secondary-footer-right { float: right; }

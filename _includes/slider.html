@@ -1,13 +1,12 @@
-<div class="container">
-  <h4>Unsere Leistungen</h4>
-</div>
+<div class="slider">
+  <div class="container">
+    <h4>Unsere Leistungen</h4>
+  </div>
 
-<div id="slider">
-  <div class="slider">
+  <div class="slider-content">
     {% for post in site.categories.slider %}
-      <div class="tmp">
-        <img src="img/{{ post.img }}">
-        <div class="tmp-content container">
+      <div class="{{ post.sliderclass }}">
+        <div class="container">
           <h4><span>{{ post.heading }}</span></h4>
           <div><span>{{ post.text }}</span></div>
           <a href="{{ post.link }}" class="btn btn-primary btn-group">Mehr erfahren</a>
@@ -15,4 +14,5 @@
       </div>
     {% endfor %}
   </div>
+
 </div>

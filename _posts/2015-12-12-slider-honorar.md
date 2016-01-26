@@ -1,7 +1,7 @@
 ---
 
 category: slider
-img: slider-honorar.png
+sliderclass: slider-honorar
 heading: Honorarberatung
 text: Some text hier.
 link: /TODO/

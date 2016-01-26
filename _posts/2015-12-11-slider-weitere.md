@@ -1,9 +1,9 @@
 ---
 
 category: slider
-img: slider-weitere.png
+sliderclass: slider-weitere
 heading: Weitere Leistungen
-text: Auch in allen anderen Fällen finden wir eine gemeinsame Lösung.
+text: Auch in allen anderen Fällen<span class='spacer'></span><br /><span class='spacer'></span>finden wir eine gemeinsame Lösung.
 link: /TODO/
 
 ---
