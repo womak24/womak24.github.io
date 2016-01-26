@@ -178,6 +178,14 @@ h4 {
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 
+@media (max-width: 280px) {
+  .navbar-text,
+  .slick-next,
+  .slick-prev  {
+    display: none !important;
+  }
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
 
