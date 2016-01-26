@@ -1,5 +1,8 @@
 $border-width: 3px;
 
+// Tagline - blue bar at very top (desktop only)
+.tagline { background-color: $brand-primary; }
+
 // Logo
 #logo { max-height: 155px; }
 
@@ -195,6 +198,12 @@ h4 {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
+
+  // resetting sticky nav for smartphone version
+  body {
+    margin: 0;
+    padding-top: 0px;
+  }
 
   // Slider
   .slider-immo,
