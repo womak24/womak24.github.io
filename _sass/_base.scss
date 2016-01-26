@@ -4,7 +4,14 @@ $border-width: 3px;
 #logo { height: 155px; }
 
 // Navigation
-.navbar-default .navbar-toggle{ border-color: transparent; }
+.navbar-default .navbar-toggle{
+  border-color: transparent;
+  color: white;
+}
+
+.navbar-txt {
+  padding-right: $padding-base-horizontal;
+}
 
 // START - Sticky Navigation
 // http://codepen.io/Guilh/pen/JLKbn
@@ -179,7 +186,7 @@ h4 {
 /* No media query since this is the default in Bootstrap */
 
 @media (max-width: 280px) {
-  .navbar-text,
+  .navbar-txt,
   .slick-next,
   .slick-prev  {
     display: none !important;
