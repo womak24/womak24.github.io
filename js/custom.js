@@ -15,7 +15,7 @@ $(window).scroll(function() {
 
 
 $(document).ready(function(){
-  $('.slider').slick({
+  $('.slider-content').slick({
     dots: true,
     centerMode: true,
     centerPadding: '0px',
