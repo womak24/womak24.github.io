@@ -76,6 +76,44 @@ h2.slogan {
   margin-top: $line-height-computed/2 - 1;
 }
 
+// Subside (with sidebar)
+.subside { 
+    
+    .container {
+        padding-top: $padding-large-vertical;
+    }
+    
+  h4 { // override h4 für supertitel (Über uns/sidebar)
+    color: $brand-primary;
+    border-bottom: $border-width solid $brand-primary;
+  }
+  .panel, .panel-group .panel-heading+.panel-collapse>.panel-body{ // Remove borders from accordion
+    // http://stackoverflow.com/questions/28866553/remove-border-from-bootstrap-accordion
+    border: none;
+    box-shadow: none;
+}
+    
+    // Override Backgrond color for accordion http://stackoverflow.com/questions/26985812/override-bootstrap-accordion-colors-in-bootstrap-for-angularjs
+    .panel-default >.panel-heading {
+        background-color: white;
+        border: 2px solid;
+        border-color: $gray-lighter;
+    }
+    
+    #accordion {
+    h4 { // title
+        color: $gray-base;
+        border: none;
+      }
+    .fa { // icons: alles schoen symetrisch
+        width: 20px; 
+        text-align: center;
+        color: $brand-primary;
+    }
+}
+}
+
+
 // Slider
 
 .slider {
@@ -162,6 +200,7 @@ h4 {
   }
 }
 
+
 // Teaser
 .teaser {
   text-align: center;
@@ -197,6 +236,13 @@ h4 {
     padding-left: $padding-base-horizontal;
     padding-right: $padding-base-horizontal;
   }
+}
+
+
+// Star after all required form inputs 
+.form-group.required .control-label:after { 
+   content:" *";
+   color:red;
 }
 
 // Secondary Footer
@@ -358,3 +404,5 @@ header {
   .secondary-footer-left { float: left; }
   .secondary-footer-right { float: right; }
 }
+
+
