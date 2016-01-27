@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+
+    <div class="main">
+        <div class="subside">
+    
+    <img src="{{site.baseurl}}{{page.image}}" class="img-responsive" alt="">
+    
+    <div class="container">
+    
+       
+    <h4>{{ page.title }}</h4>
+                
+    {{page.text}}
+     
+        
+    <div class="container leistung">
+  <div class="row">
+    {% for item in page.items %}
+    <div class="col-md-4 col-sm-6 leistung-item">
+        <div class="leistung-item-content">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-3 ">
+                        <span class="fa-stack fa-2x">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa {{ item.icon }} fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-9">
+                        <h4>{{ item.text }}</h4>
+                        <a href="{{ item.link }}">Mehr erfahren<i class="fa fa-fw fa-angle-double-right"></i></a>
+                    </div>
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>    
+        
+
+    </div>
+</div>
+        
+        {{ content }}
+        
+        {% include footer.html %}
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
+
+    <!-- Slick slider -->
+    <script type="text/javascript" src="{{ site.baseurl }}/js/slick.min.js"></script>
+
+    <!-- Own Javascript stuff -->
+    <script src="{{ site.baseurl }}/js/custom.js"></script>
+    <script src="{{ site.baseurl }}/js/validator.js"></script>
+  </body>
+
+</html>
+
+
+
