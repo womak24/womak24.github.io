@@ -79,6 +79,10 @@ h2.slogan {
 // Subside (with sidebar)
 .subside { 
     
+    .img-responsive {
+        margin: 0 auto;
+    }
+    
     .container {
         padding-top: $padding-large-vertical;
     }
@@ -201,6 +205,9 @@ h4 {
 }
 
 
+
+
+
 // Teaser
 .teaser {
   text-align: center;
@@ -254,6 +261,34 @@ h4 {
   text-align: center;
 
   a { color: white; }
+}
+
+
+
+// Leistungen in Subside
+.leistung {
+   
+  text-align: left;
+  .fa-circle { color: $brand-primary; }
+
+
+    .leistung-item { 
+        margin-bottom: 2 * $line-height-computed; 
+    }
+    
+    .leistung-item-content {
+        padding: $padding-base-horizontal $padding-base-vertical $padding-base-horizontal $padding-base-vertical;
+        border: 1px solid;
+        border-color: $gray-lighter;
+    }
+    
+    h4 {
+        border: none;
+        margin-top: 0;
+        color: $gray-dark;
+    }
+        
+        
 }
 
 // MEDIA QUERIES ***
