@@ -1,59 +1,43 @@
 {% include html_top.html %}
 
-    <div class="main">
-        
-        <div class="subside">
-    
-    <img src="{{site.baseurl}}/img/slider-immo.png" class="img-responsive" alt="">
-    
-    <div class="container">
-        <div class="row">
-    
-            <div class="col-md-9">
-                 <h4>{{page.title}}</h4>
-                
-                {{page.text}}
-                {{ content }}
-            
-            </div>
-            <div class="col-md-3 sidebar">
-                <h4>{{page.sidebar-title}}</h4>
-            
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                    {% assign post_index = 1 %} <!-- https://talk.jekyllrb.com/t/how-to-retrieve-the-current-post-index-number-in-jekyll/814/5 -->
-                    {% for item in page.sidebar-items %}
-                  <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="heading{{post_index}}">
-                      <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{post_index}}" aria-expanded="true" aria-controls="collapse{{post_index}}"> <!---->
-                            <i class="fa {{item.icon}}"></i> {{ item.title }}
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="collapse{{post_index}}" class="panel-collapse collapse {% if post_index == 1 %}in{% endif %}" role="tabpanel" aria-labelledby="heading{{post_index}}">
-                      <div class="panel-body">
-                       {{ item.text }}
-                      </div>
-                    </div>
-                  </div>
-                     {% assign post_index = post_index | plus: 1 %}
-                     {% endfor %}
-                    
-            
-                    
-                    
+<div class="main">
+
+  <img src="{{ site.baseurl }}/img/{{ page.image }}" class="img-responsive" alt="{{ page.alt }}">
+
+  <div class="container subside">
+    <div class="row">  
+      <div class="col-md-9">
+        <h4>{{ page.title }}</h4>
+        {{ page.text }}
+         {{ content }}
+      </div>
+
+      <div class="col-md-3 sidebar">
+        <h4>{{ page.sidebar-title }}</h4>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          {% assign post_index = 1 %}
+          <!-- https://talk.jekyllrb.com/t/how-to-retrieve-the-current-post-index-number-in-jekyll/814/5 -->
+          {% for item in page.sidebar-items %}
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="heading{{ post_index }}">
+                <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ post_index }}" aria-expanded="true" aria-controls="collapse{{ post_index }}"><i class="fa fa-fw {{ item.icon }}"></i> {{ item.title }}</a></h4>
+              </div>
+              <div id="collapse{{ post_index }}" class="panel-collapse collapse {% if post_index == 1 %}in{% endif %}" role="tabpanel" aria-labelledby="heading{{ post_index }}">
+                <div class="panel-body">
+                  {{ item.text }}
                 </div>
+              </div>
             </div>
+            {% assign post_index = post_index | plus: 1 %}
+          {% endfor %}
         </div>
+      </div>
 
     </div>
+  </div>
+  
+  {% include footer.html %}
+
 </div>
-        
-        
-        {% include footer.html %}
-    </div>
-
 
 {% include html_bottom_js_includes.html %}
-
-

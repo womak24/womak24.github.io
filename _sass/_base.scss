@@ -76,47 +76,68 @@ h2.slogan {
   margin-top: $line-height-computed/2 - 1;
 }
 
-// Subside (with sidebar)
-.subside { 
+// Accordeon
+
+// Remove borders from accordion
+// http://stackoverflow.com/questions/28866553/remove-border-from-bootstrap-accordion
+.panel,
+.panel-group .panel-heading+.panel-collapse>.panel-body {
+  border: none;
+  box-shadow: none;
+}
     
-    .img-responsive {
-        margin: 0 auto;
-    }
+// Override Backgrond color for accordion http://stackoverflow.com/questions/26985812/override-bootstrap-accordion-colors-in-bootstrap-for-angularjs
+.panel-default >.panel-heading {
+    background-color: white;
+    border: 2px solid;
+    border-color: $gray-lighter;
+}
     
-    .container {
-        padding-top: $padding-large-vertical;
-    }
-    
-  h4 { // override h4 für supertitel (Über uns/sidebar)
-    color: $brand-primary;
-    border-bottom: $border-width solid $brand-primary;
-  }
-  .panel, .panel-group .panel-heading+.panel-collapse>.panel-body{ // Remove borders from accordion
-    // http://stackoverflow.com/questions/28866553/remove-border-from-bootstrap-accordion
+#accordion {
+  // title
+  h4 {
     border: none;
-    box-shadow: none;
-}
-    
-    // Override Backgrond color for accordion http://stackoverflow.com/questions/26985812/override-bootstrap-accordion-colors-in-bootstrap-for-angularjs
-    .panel-default >.panel-heading {
-        background-color: white;
-        border: 2px solid;
-        border-color: $gray-lighter;
-    }
-    
-    #accordion {
-    h4 { // title
-        color: $gray-base;
-        border: none;
-      }
-    .fa { // icons: alles schoen symetrisch
-        width: 20px; 
-        text-align: center;
-        color: $brand-primary;
-    }
-}
+    color: $gray-base;
+  }
+
+  .fa { color: $brand-primary; }
+
+  // TODO: fix hovering line thingy!
 }
 
+// Subside
+.subside {
+
+  // img needs to scale according to window width! usually as bg image I think cant be done as image
+
+  padding-top: $padding-large-vertical;
+    
+  h4 { // override h4 für supertitel (Über uns/sidebar)
+    border-bottom: $border-width solid $brand-primary;
+    color: $brand-primary;
+  }
+}
+
+// Leistungen in Subside
+// TODO maye call boxes
+.leistung {
+  text-align: left;
+
+  .fa-circle { color: $brand-primary; }
+  .leistung-item { margin-bottom: 2 * $line-height-computed; }
+  
+  .leistung-item-content {
+    padding: $padding-base-horizontal $padding-base-vertical;
+    border: 1px solid $gray-lighter;
+    min-height: 125px; // TODO: should be checked on mobile version
+  }
+    
+  h4 {
+    border: none;
+    margin-top: 0;
+    color: $gray-dark;
+  }     
+}
 
 // Slider
 
@@ -204,10 +225,6 @@ h4 {
   }
 }
 
-
-
-
-
 // Teaser
 .teaser {
   text-align: center;
@@ -245,11 +262,10 @@ h4 {
   }
 }
 
-
 // Star after all required form inputs 
-.form-group.required .control-label:after { 
-   content:" *";
-   color:red;
+.form-group.required .control-label:after {
+  content: " *";
+  color: red;
 }
 
 // Secondary Footer
@@ -261,35 +277,6 @@ h4 {
   text-align: center;
 
   a { color: white; }
-}
-
-
-
-// Leistungen in Subside
-.leistung {
-   
-  text-align: left;
-  .fa-circle { color: $brand-primary; }
-
-
-    .leistung-item { 
-        margin-bottom: 2 * $line-height-computed; 
-    }
-    
-    .leistung-item-content {
-        padding: $padding-base-horizontal $padding-base-vertical $padding-base-horizontal $padding-base-vertical;
-        border: 1px solid;
-        border-color: $gray-lighter;
-        min-height: 125px;
-    }
-    
-    h4 {
-        border: none;
-        margin-top: 0;
-        color: $gray-dark;
-    }
-        
-        
 }
 
 // MEDIA QUERIES ***

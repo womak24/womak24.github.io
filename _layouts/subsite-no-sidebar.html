@@ -1,28 +1,21 @@
 {% include html_top.html %}
 
-    <div class="main">
-        <div class="subside">
-    
-    <img src="{{site.baseurl}}{{page.image}}" class="img-responsive" alt="">
-    
+<div class="main">
+
+  <img src="{{ site.baseurl }}{{ page.image }}" class="img-responsive" alt="">
+
+  <div class="subside">
     <div class="container">
-    
-       
-    <h4>{{ page.title }}</h4>
-                
-    {{page.text}}
-    {{ content }}  
+
+      <h4>{{ page.title }}</h4>          
+      {{ page.text }}
+      {{ content }}
 
     </div>
+  </div>
+
+{% include footer.html %}
+
 </div>
-        
-        
-        
-        {% include footer.html %}
-    </div>
-
 
 {% include html_bottom_js_includes.html %}
-
-
-
