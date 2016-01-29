@@ -6,8 +6,68 @@ permalink: /Schaden-melden/index.php
 
 {% raw %}
 <?php
+
+     function mail_att($to,$subject,$message,$attachments)
+   {
+   $absender = "Womak Schaden melden";
+   $absender_mail = "formular@womak.de";
+   $reply = "formular@womak.de";
+ 
+   $mime_boundary = "-----=" . md5(uniqid(mt_rand(), 1));
+ 
+   $header  ="From:".$absender."<".$absender_mail.">\n";
+   $header .= "Reply-To: ".$reply."\n";
+ 
+   $header.= "MIME-Version: 1.0\r\n";
+   $header.= "Content-Type: multipart/mixed;\r\n";
+   $header.= " boundary=\"".$mime_boundary."\"\r\n";
+ 
+   $content = "This is a multi-part message in MIME format.\r\n\r\n";
+   $content.= "--".$mime_boundary."\r\n";
+   $content.= "Content-Type: text/html charset=\"iso-8859-1\"\r\n";
+   $content.= "Content-Transfer-Encoding: 8bit\r\n\r\n";
+   $content.= $message."\r\n";
+ 
+   //$anhang ist ein Mehrdimensionals Array
+   //$anhang enthält mehrere Dateien
+   if(is_array($attachments) AND is_array(current($attachments)))
+      {
+      foreach($attachments AS $dat)
+         {
+         $data = chunk_split(base64_encode($dat['data']));
+         $content.= "--".$mime_boundary."\r\n";
+         $content.= "Content-Disposition: attachment;\r\n";
+         $content.= "\tfilename=\"".$dat['name']."\";\r\n";
+         $content.= "Content-Length: .".$dat['size'].";\r\n";
+         $content.= "Content-Type: ".$dat['type']."; name=\"".$dat['name']."\"\r\n";
+         $content.= "Content-Transfer-Encoding: base64\r\n\r\n";
+         $content.= $data."\r\n";
+         }
+      $content .= "--".$mime_boundary."--"; 
+      }
+   else //Nur 1 Datei als Anhang
+      {
+      $data = chunk_split(base64_encode($attachments['data']));
+      $content.= "--".$mime_boundary."\r\n";
+      $content.= "Content-Disposition: attachment;\r\n";
+      $content.= "\tfilename=\"".$attachments['name']."\";\r\n";
+      $content.= "Content-Length: .".$attachments['size'].";\r\n";
+      $content.= "Content-Type: ".$attachments['type']."; name=\"".$attachments['name']."\"\r\n";
+      $content.= "Content-Transfer-Encoding: base64\r\n\r\n";
+      $content.= $data."\r\n";
+      } 
+      
+    if(@mail($to, $subject, $content, $header)) return true;
+    else return false;
+   }
+
+
     // https://bootstrapbay.com/blog/working-bootstrap-contact-form/
     error_reporting( error_reporting() & ~E_NOTICE );
+    $max_allowed_file_size = 3000; // size in KB
+    $allowed_extensions = array("jpg", "jpeg", "gif", "bmp");
+
+
     if (isset($_POST["submit"])) {
         $name = $_POST['name'];
         $firm = $_POST['firm'];
@@ -15,6 +75,49 @@ permalink: /Schaden-melden/index.php
         $message = $_POST['message'];
         $time = $_POST['time'];
         $human = intval($_POST['human']);
+
+        
+    
+
+        if (!empty($_FILES['picture']['name'])) {
+            // File, get infos
+            //Get the uploaded file information
+            $name_of_uploaded_file =
+            basename($_FILES['picture']['name']);
+
+            //get the file extension of the file
+            $type_of_uploaded_file =
+            substr($name_of_uploaded_file,
+            strrpos($name_of_uploaded_file, '.') + 1);
+
+            $size_of_uploaded_file =
+            $_FILES["picture"]["size"]/1024;//size in KBs
+
+            // Validate
+
+
+            //Validations
+            if($size_of_uploaded_file > $max_allowed_file_size )
+            {
+                $errors .= "\n Die Größe des Bildes darf $max_allowed_file_size MB nicht überschreiten (Ist $size_of_uploaded_file)";
+            }
+
+            //------ Validate the file extension -----
+            $allowed_ext = false;
+            for($i=0; $i<sizeof($allowed_extensions); $i++) {
+                if (strcasecmp($allowed_extensions[$i],$type_of_uploaded_file) == 0)
+                {
+                $allowed_ext = true;
+                }
+            }
+
+            if(!$allowed_ext) {
+            $errors .= "\n Die hochgeladene Datei hat den falschen Dateityp. ".
+            " Nur die folgenden Dateitypen werden unterstützt: ".implode(',',$allowed_extensions);
+            }
+        }
+        
+
         $from = 'kontakt@Womak24.de'; 
         $to = 'hackberd@gmail.com'; 
         $subject = 'Kontaktanfrage Womak24';
@@ -39,22 +142,45 @@ permalink: /Schaden-melden/index.php
         if ($human !== 5) {
             $errHuman = 'Dies ist nicht die richtige Antwort';
         }
- 
-// If there are no errors, send the email
-if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
-    if (mail ($to, $subject, $body, $from)) {
-        $result='<div class="alert alert-success">Vielen Dank! Wir werden Ihnen so schnell wie möglich antworten.</div>';
-    } else {
-        $result='<div class="alert alert-danger">Es gab einen Fehler. Bitte versuchen Sie es noch einmal.</div>';
-    }
-}
+    
+
+		// If there are no errors, send the email
+		if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
+		    $success = FALSE;
+
+		    if(!empty($_FILES['picture']['name'])) {
+                if (!$errors) {
+                    //echo "send att $errors";
+                    $attachments = array();
+				    $attachments["name"] = $_FILES['picture']['name']; 
+				    $attachments["size"] = $_FILES['picture']['size'];
+				    $attachments["type"] = $_FILES['picture']['type'];
+				    $attachments["data"] = implode("",file($_FILES['picture']['tmp_name']));
+				    $success = mail_att($to,$subject,$body,$attachments);
+                } else {
+                    //echo "no send";
+                    $success = FALSE;
+                }
+		       
+		    } else {
+                //echo "send no att";
+		        $success = mail ($to, $subject, $body, $from);
+		    }
+
+		    if ($success) {
+		        $result='<div class="alert alert-success">Vielen Dank! Wir werden Ihnen so schnell wie möglich antworten.</div>';
+		    } else {
+		        $result='<div class="alert alert-danger">Es gab einen Fehler. Bitte überprüfen Sie ihre Eingaben.</div>';
+   		    }
+
+		}
     }
 
 ?>
 {% endraw %}
 <div class="container">
     <h1 class="slogan text-center">Schaden melden</h1>
-    <form role="form"  data-toggle="validator" method="post" action="index.php">
+    <form role="form"  data-toggle="validator" method="post" action="index.php" enctype="multipart/form-data">
         <div class="form-group">
         <div class="col-sm-10 col-sm-offset-2">
              {% raw %}  <?php echo $result; ?>    {% endraw %}
@@ -62,7 +188,7 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
     </div>
     <div class="form-group required">
         <label for="name" class="control-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Vor- und Nachname" value="" required="required">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Vor- und Nachname" value="{% raw %}<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '' ?> {% endraw %}" required="required">
         {% raw %} 
             <?php if (isset($errName)) {
         echo "<p class='text-danger'>$errName</p>";
@@ -72,25 +198,30 @@ if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
     </div>
     <div class="form-group">
         <label for="firm" class="control-label">Firma</label>
-        <input type="text" class="form-control" id="firm" name="firm" placeholder="Firma" value="">
+        <input type="text" class="form-control" id="firm" name="firm" placeholder="Firma" value="{% raw %}<?php echo isset($_POST['firm']) ? htmlspecialchars($_POST['firm']) : '' ?> {% endraw %}">
     </div>
     <div class="form-group required">
         <label for="email" class="control-label">Kontaktdaten für eine schnellste Kontaktaufnahme durch uns</label>
-        <input type="text" class="form-control" id="email" name="email" placeholder="Email oder Telefonnummer" value="" required="required">
+        <input type="text" class="form-control" id="email" name="email" placeholder="Email oder Telefonnummer" value="{% raw %}<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?> {% endraw %}" required="required">
         {% raw %} <?php echo "<p class='text-danger'>$errEmail</p>";?> {% endraw %}
     </div>
     <div class="form-group required">
         <label for="message" class="control-label">Kurze Schadensschilderung</label>
-        <textarea class="form-control" rows="4" name="message" id="message" required="required"></textarea>
+        <textarea class="form-control" rows="4" name="message" id="message" required="required">{% raw %}<?php echo isset($_POST['message']) ? htmlspecialchars($_POST['message']) : '' ?> {% endraw %}</textarea>
         {% raw %}  <?php echo "<p class='text-danger'>$errMessage</p>";?>  {% endraw %}
     </div>
     <div class="form-group">
+        <label for="picture" class="control-label">Foto vom Schaden</label>
+        <input type="file" class="form-control" id="picture" name="picture"  value="">
+        {% raw %}   <?php echo "<p class='text-danger'>$errors</p>";?>  {% endraw %}
+    </div>
+        <div class="form-group">
         <label for="time" class="control-label">Schadenszeitpunkt</label>
-        <input type="datetime" class="form-control" id="time" name="time" placeholder="Zeitpunkt" value="">
+        <input type="datetime" class="form-control" id="time" name="time" placeholder="Zeitpunkt" value="{% raw %}<?php echo isset($_POST['time']) ? htmlspecialchars($_POST['time']) : '' ?> {% endraw %}">
     </div>
     <div class="form-group required">
         <label for="human" class="control-label">2 + 3 = ?</label>
-        <input type="text" class="form-control" id="human" name="human" placeholder="Ihre Antwort" required="required">
+        <input type="text" class="form-control" id="human" name="human" placeholder="Ihre Antwort" required="required" value="{% raw %}<?php echo isset($_POST['human']) ? htmlspecialchars($_POST['human']) : '' ?> {% endraw %}">
         {% raw %}   <?php echo "<p class='text-danger'>$errHuman</p>";?>  {% endraw %}
     </div>
     <div class="form-group">
