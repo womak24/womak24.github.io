@@ -2,16 +2,17 @@
 
 <div class="main">
   
-  <img src="{{ site.baseurl }}{{ page.image }}" class="img-responsive" alt="">
+  <img src="{{ site.baseurl }}/img/{{ page.image }}" class="img-responsive center-block" alt="">
   
   <div class="container subside">
 
-    <h4>{{ page.title }}</h4>         
-    {{ page.text }}
-    {{ content }}
-
+    <h2>{{ page.title }}</h2>         
+    <div class="content"> 
+        {{ content }}
+    </div>
   </div>
  
+
   <div class="container leistung">
     <div class="row">
       {% for item in page.items %}
@@ -33,8 +34,9 @@
         </div>
       {% endfor %}
     </div>
-  </div>    
+  </div>   
 
+    
 {% include footer.html %}
 
 </div>

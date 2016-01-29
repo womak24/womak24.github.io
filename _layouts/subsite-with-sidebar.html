@@ -2,16 +2,17 @@
 
 <div class="main">
 
-  <img src="{{ site.baseurl }}/img/{{ page.image }}" class="img-responsive" alt="{{ page.alt }}">
+  <img src="{{ site.baseurl }}/img/{{ page.image }}" class="img-responsive center-block" alt="{{ page.alt }}">
 
   <div class="container subside">
     <div class="row">  
       <div class="col-md-9">
-        <h4>{{ page.title }}</h4>
+        <h2>{{ page.title }}</h2>
         {{ page.text }}
          {{ content }}
       </div>
 
+    {% if page.items %}  
       <div class="col-md-3 sidebar">
         <h4>{{ page.sidebar-title }}</h4>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -32,6 +33,7 @@
           {% endfor %}
         </div>
       </div>
+    {% endif %}   
 
     </div>
   </div>
