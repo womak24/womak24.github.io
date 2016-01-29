@@ -43,6 +43,17 @@ $(document).ready(function(){
       }
     ]
   });
+    
+    
+    
+  // http://stackoverflow.com/a/23769601/2596452    
+  $(document).click(function (event) {
+        var clickover = $(event.target);
+        var _opened = $("#bs-example-navbar-collapse-1").hasClass("collapse in");
+        if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+            $("button.navbar-toggle").click();
+        }
+    });
 });
 
 
@@ -56,3 +67,4 @@ $("#navbar-toggle-button-id").on('click', function(e) {
     }, 200); // zeit
 
 });
+
