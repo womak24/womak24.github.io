@@ -51,7 +51,7 @@ header,
 
 .main {
   background: #fff;
-  padding-top: 70px;
+  padding-top: 70px; // 0 damit bilder direkt abschließen mit menü
 }
 // END - Sticky Navigation
 
@@ -107,15 +107,18 @@ h2.slogan {
 
 // Subside
 .subside {
-
+    
   // img needs to scale according to window width! usually as bg image I think cant be done as image
 
-  padding-top: $padding-large-vertical;
+    padding-top: $padding-large-vertical;
+    padding: 0;  
     
-  h4 { // override h4 für supertitel (Über uns/sidebar)
-    border-bottom: $border-width solid $brand-primary;
-    color: $brand-primary;
-  }
+    h2 { // override h4 für supertitel (Über uns/sidebar)
+        border-bottom: $border-width solid $brand-primary;
+        color: $brand-primary;
+        font-size: $font-size-large;
+        @extend .text-uppercase; 
+    }
 }
 
 // Leistungen in Subside
@@ -133,6 +136,7 @@ h2.slogan {
   }
     
   h4 {
+    word-wrap: break-word;
     border: none;
     margin-top: 0;
     color: $gray-dark;
@@ -292,6 +296,16 @@ h4 {
   }
 }
 
+/* Extra small to Small Devices <768px */
+@media (max-width: $screen-sm-min) {
+  .subside { // Content padding in subside when small 
+    .content {
+      padding-left: $padding-base-horizontal;
+      padding-right: $padding-base-horizontal;
+    }  
+  }    
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
 
@@ -364,6 +378,8 @@ header {
     margin-top: 0; // remove the gap so it doesn't close
  }
 
+  
+    
   // Slider
   .slider-immo,
   .slider-analyse,
@@ -394,11 +410,13 @@ header {
       padding-right: 0;
     }
   }
-
+    
+ 
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: $screen-md-min) {
+
 }
 
 /* Large devices (large desktops, 1200px and up) */
