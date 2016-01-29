@@ -45,3 +45,14 @@ $(document).ready(function(){
   });
 });
 
+
+// http://stackoverflow.com/questions/6677035/jquery-scroll-to-element
+$("#navbar-toggle-button-id").on('click', function(e) {
+   // prevent default anchor click behavior
+   e.preventDefault();
+   // animate
+   $('html, body').animate({
+        scrollTop: $("#navbar-toggle-button-id").offset().top
+    }, 200); // zeit
+
+});
