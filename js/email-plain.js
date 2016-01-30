@@ -16,6 +16,6 @@
                       link += (key.charAt(ltr))
                     }
                   }
-                document.write("<a href='mailto:"+link+"'>Email schreiben</a>")
+                  document.write("<a href='mailto:"+link+"'>"+link+"</a>")
                 }
                 

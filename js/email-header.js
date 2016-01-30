@@ -16,6 +16,6 @@
                       link += (key.charAt(ltr))
                     }
                   }
-                document.write("<a href='mailto:"+link+"' class='btn btn-info btn-sm navbar-btn'><i class='fa fa-envelope-o'></i> Email schreiben</a>")
+                document.write("<a href='mailto:"+link+"' class='btn btn-info btn-sm navbar-btn'><i class='fa fa-envelope-o'></i> "+link+"</a>")
                 }
                 
