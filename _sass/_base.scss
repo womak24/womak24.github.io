@@ -1,4 +1,7 @@
 $border-width: 3px;
+// Footer settings
+$footer-bg-color: $gray-light;
+$footer-text-color: white;    
 
 // Tagline - blue bar at very top (desktop only)
 .tagline { background-color: $brand-primary; }
@@ -204,7 +207,9 @@ h2.slogan {
   top: -21px;
 }
 
-.slick-next { right: 15px; }
+.slick-next { 
+    right: 15px; 
+}
 
 .slick-prev {
   left: initial;
@@ -224,8 +229,8 @@ h4 {
 
   // grey h4 in footer
   .first-footer & {
-    border-color: $gray-light;
-    color: $gray-light;
+    border-color: $footer-text-color;//$gray-light;
+    color: $footer-text-color;//$gray-light;
   }
 }
 
@@ -251,11 +256,14 @@ h4 {
 }
 
 // First Footer
-.first-footer { color: $gray-light; }
+.first-footer { //settings on top
+    color: $footer-text-color; 
+    background-color: $footer-bg-color; 
+}
 
 .first-footer-item {
-  margin-bottom: 2 * $line-height-computed;
-  margin-top: 2 * $line-height-computed;
+  margin-bottom:  $line-height-computed; // 2 * $line-height-computed;
+  //margin-top: 2 * $line-height-computed;
 
   // make line over whole screen, when smaller than sm-device
   padding: 0;
