@@ -45,18 +45,24 @@ $(document).ready(function(){
   });
     
     
-    
-  // http://stackoverflow.com/a/23769601/2596452    
+// Hide Dropdown when clicking somewhere    
+// http://stackoverflow.com/a/23769601/2596452    
   $(document).click(function (event) {
         var clickover = $(event.target);
         var _opened = $("#bs-example-navbar-collapse-1").hasClass("collapse in");
         if (_opened === true && !clickover.hasClass("navbar-toggle")) {
             $("button.navbar-toggle").click();
         }
-    });
+  });
+    
+  // Highlight current Menu item    
+  $.each($('#navbar').find('li'), function() {
+        $(this).toggleClass('active',
+            $(this).find('a').attr('href') == window.location.pathname);
+    });    
 });
 
-
+// Move Menu up when klicking it
 // http://stackoverflow.com/questions/6677035/jquery-scroll-to-element
 $("#navbar-toggle-button-id").on('click', function(e) {
    // prevent default anchor click behavior
