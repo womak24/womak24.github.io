@@ -138,6 +138,10 @@ h2.slogan {
     min-height: 125px; // TODO: should be checked on mobile version
   }
     
+  .leistung-item-content:hover {
+    background-color: $gray-lighter;
+  }
+    
   h4 {
     word-wrap: break-word;
     border: none;
