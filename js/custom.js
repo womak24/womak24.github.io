@@ -62,7 +62,7 @@ $(document).ready(function(){
     });    
 });
 
-// Move Menu up when klicking it
+// Move Menu up when clicking it
 // http://stackoverflow.com/questions/6677035/jquery-scroll-to-element
 $("#navbar-toggle-button-id").on('click', function(e) {
    // prevent default anchor click behavior
