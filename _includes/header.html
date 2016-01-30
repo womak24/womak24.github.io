@@ -2,7 +2,7 @@
   <div class="container">
     <a href="/schaden-melden/" class="btn btn-success btn-sm navbar-btn"><i class="fa fa-bolt"></i> Schaden melden</button>
     <a href="tel:0049353348260" class="btn btn-info btn-sm navbar-btn"><i class="fa fa-phone"></i> 03533 48260</a>
-    <a href="mailto:info@womak24.de" class="btn btn-info btn-sm navbar-btn"><i class="fa fa-envelope-o"></i> info@womak24.de</a>
+    <script src="{{ site.baseurl }}/js/email-header.js"></script><noscript></noscript>
   </div>
 </header>
 
@@ -14,17 +14,20 @@
   </div>
 </header>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
   <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand hidden-xs hidden-sm" href="/">
           <img alt="Womak 24 GmbH" src="{{site.baseurl}}/img/womak-logo_medium-rgb-72dpi.png">
         </a>
+         <a class="navbar-brand hidden-md hidden-lg" href="/" >
+           <i class="fa fa-home"></i>
+        </a>  
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" id="navbar-toggle-button-id">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-txt">MENÜ</span><i class="fa fa-lg fa-bars"></i>
         </button>
-        <button type="button" class="btn btn-success btn-sm navbar-btn visible-xs"><i class="fa fa-bolt"></i> Schaden melden</button>
+      <button type="button" class="btn btn-success btn-sm navbar-btn visible-xs"><i class="fa fa-bolt"></i> Schaden melden</button> 
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -36,7 +39,8 @@
           </li>
           <li class="visible-xs">
             <p class="navbar-btn">
-              <a href="mailto:info@womak24.de" class="btn btn-info btn-sm"><i class="fa fa-envelope-o"></i> info@womak24.de</a>
+                <script src="{{ site.baseurl }}/js/email-header.js"></script>
+                <noscript>Bitte Javascript aktivieren.</noscript>
             </p>
           </li>
           <li><a href="/about/"><i class="fa fa-2x fa-info hidden-xs "></i> Über uns</a></li>
