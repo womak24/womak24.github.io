@@ -1,6 +1,6 @@
 $border-width: 3px;
 $footer-bg-color: $gray-lighter;
-$footer-text-color: $text-color;    
+$footer-text-color: $gray-dark;    
 
 // Tagline - blue bar at very top (desktop only)
 .tagline { background-color: $brand-primary; }
@@ -53,7 +53,7 @@ header,
 
 .main {
   background: #fff;
-  padding-top: 70px; // 0 damit bilder direkt abschließen mit menü
+  padding-top: 60px; // 0 damit bilder direkt abschließen mit menü
 }
 // END - Sticky Navigation
 
@@ -108,6 +108,8 @@ h2.slogan {
 
 // Subside
 .subside {
+  padding-bottom: 2 * $line-height-computed;
+
   h2 { // override h4 für supertitel (Über uns/sidebar)
     border-bottom: $border-width solid $brand-primary;
     color: $brand-primary;
