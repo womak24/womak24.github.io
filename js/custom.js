@@ -13,7 +13,6 @@ $(window).scroll(function() {
   }
 });
 
-
 $(document).ready(function(){
   $('.slider-content').slick({
     dots: true,
