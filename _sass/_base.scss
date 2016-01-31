@@ -79,34 +79,33 @@ h2.slogan {
   margin-top: $line-height-computed/2 - 1;
 }
 
-// Accordeon
+// Accordeon/Panel
 
-// Remove borders from accordion
-// http://stackoverflow.com/questions/28866553/remove-border-from-bootstrap-accordion
-.panel,
-.panel-group .panel-heading+.panel-collapse>.panel-body {
-  border: none;
-  box-shadow: none;
-}
-    
-// Override Backgrond color for accordion http://stackoverflow.com/questions/26985812/override-bootstrap-accordion-colors-in-bootstrap-for-angularjs
-.panel-default >.panel-heading {
-    background-color: white;
-    border: 2px solid;
-    border-color: $gray-lighter;
-}
-    
+// Accordeon/Panel Heading
 #accordion {
-  // title
-  h4 {
-    border: none;
-    color: $gray-base;
+  a {
+    display: block;
+    &:focus, &:hover { text-decoration: none; }
+    &:hover { background-color: $gray-lighter; }
   }
 
+  h3 { color: $gray-base; }
   .fa { color: $brand-primary; }
-
-  // TODO: fix hovering line thingy!
 }
+
+.panel-group {
+  .panel {
+    border: none;
+    box-shadow: none;
+    margin-bottom: $line-height-computed/2;
+  }
+  
+  .panel-heading {
+    border: 2px solid $gray-lighter;
+    .fa-ul { margin-bottom: 0px; }
+  }
+}
+
 
 // Subside
 .subside {
