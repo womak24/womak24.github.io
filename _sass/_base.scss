@@ -1,7 +1,6 @@
 $border-width: 3px;
-// Footer settings
-$footer-bg-color: $gray-light;
-$footer-text-color: white;    
+$footer-bg-color: $gray-lighter;
+$footer-text-color: $text-color;    
 
 // Tagline - blue bar at very top (desktop only)
 .tagline { background-color: $brand-primary; }
@@ -109,18 +108,12 @@ h2.slogan {
 
 // Subside
 .subside {
-    
-  // img needs to scale according to window width! usually as bg image I think cant be done as image
-
-    padding-top: $padding-large-vertical;
-    padding: 0;  
-    
-    h2 { // override h4 für supertitel (Über uns/sidebar)
-        border-bottom: $border-width solid $brand-primary;
-        color: $brand-primary;
-        font-size: $font-size-large;
-        @extend .text-uppercase; 
-    }
+  h2 { // override h4 für supertitel (Über uns/sidebar)
+    border-bottom: $border-width solid $brand-primary;
+    color: $brand-primary;
+    font-size: $font-size-large;
+    @extend .text-uppercase; 
+  }
 }
 
 // Leistungen in Subside
@@ -129,7 +122,7 @@ h2.slogan {
   text-align: left;
 
   .fa-circle { color: $brand-primary; }
-  .leistung-item { margin-bottom: 2 * $line-height-computed; }
+  .leistung-item { margin-bottom: $line-height-computed; }
   
   .leistung-item-content {
     padding: $padding-base-horizontal $padding-base-vertical;
@@ -232,8 +225,8 @@ h4 {
 
   // grey h4 in footer
   .first-footer & {
-    border-color: $footer-text-color;//$gray-light;
-    color: $footer-text-color;//$gray-light;
+    border-color: $footer-text-color;
+    color: $footer-text-color;
   }
 }
 
@@ -259,14 +252,14 @@ h4 {
 }
 
 // First Footer
-.first-footer { //settings on top
+.first-footer {
     color: $footer-text-color; 
     background-color: $footer-bg-color; 
 }
 
 .first-footer-item {
   margin-bottom:  $line-height-computed; // 2 * $line-height-computed;
-  //margin-top: 2 * $line-height-computed;
+  margin-top: $line-height-computed;
 
   // make line over whole screen, when smaller than sm-device
   padding: 0;
@@ -292,6 +285,8 @@ h4 {
   text-align: center;
 
   a { color: white; }
+
+  ul { margin-bottom: 0px; }
 }
 
 // MEDIA QUERIES ***
