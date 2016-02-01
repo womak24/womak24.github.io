@@ -320,6 +320,27 @@ h4 {
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
 
+// Slider Arrows on Desktop Slider ist left and right
+.slick-next,
+.slick-prev {
+  top: 50%;
+}
+
+.slick-next { 
+  right: $padding-base-horizontal; 
+}
+
+.slick-prev {
+  left: 5px;
+  z-index: 100;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: $font-size-h2;
+}
+
+
 // START - Sticky Navigation
 // http://codepen.io/Guilh/pen/JLKbn
 // https://teamtreehouse.com/community/forum-tip-create-a-sticky-navigation-with-css-and-jquery-2
@@ -395,8 +416,6 @@ header {
     display: block;
     margin-top: 0; // remove the gap so it doesn't close
  }
-
-  
     
   // Slider
   .slider-immo,
