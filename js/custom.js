@@ -18,7 +18,7 @@ $(document).ready(function(){
     dots: true,
     centerMode: true,
     centerPadding: '0px',
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 6000,
     
     responsive: [
