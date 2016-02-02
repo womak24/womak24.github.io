@@ -129,6 +129,14 @@ h2.slogan {
   height: 150px;
 }
 
+.subside-img-text {
+    color: $text-color;
+    font-weight: bold;
+    background: white;
+    opacity: 0.9;
+    margin-left: $padding-base-horizontal;
+}
+
 // Leistungen in Subside
 // TODO maye call boxes
 .leistung {
