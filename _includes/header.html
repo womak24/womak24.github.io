@@ -14,6 +14,8 @@
   </div>
 </header>
 
+{% assign current = page.url | downcase | split: '/' %}
+
 <nav class="navbar navbar-default" id="navbar">
   <div class="container">
       <div class="navbar-header">
@@ -41,12 +43,12 @@
             </p>
           </li>
           <li><a href="/" class="hidden-md hidden-lg">Startseite</a></li>
-          <li><a href="/about/"><i class="fa fa-2x fa-info hidden-xs hidden-sm"></i> {{ site.navabout }}</a></li>
-          <li class="dropdown">
+          <li {% if current[1] == 'about' %}class='active'{% endif %}><a href="/about/"><i class="fa fa-2x fa-info hidden-xs hidden-sm"></i> {{ site.navabout }}</a></li>
+          <li class="dropdown {% if current[1] == 'leistungen' %}active{% endif %}">
             {% comment %} Desktop Version (menu on hover) {% endcomment %}
             <a href="/leistungen/" class="dropdown-toggle hidden-xs hidden-sm" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs hidden-sm"></i> {{ site.navleistungen }} <span class="caret"></span></a>
             {% comment %} Mobile Version (menu on klick) {% endcomment %}
-            <a href="leistungen" class="visible-xs-block visible-sm-block dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs hidden-sm"></i> {{ site.navleistungen }} <span class="caret"></span></a>
+            <a href="/leistungen/" class="visible-xs-block visible-sm-block dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs hidden-sm"></i> {{ site.navleistungen }} <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="/leistungen/risikoanalyse">{{ site.navrisiko }}</a></li>
               <li><a href="/leistungen/immobilienvs">{{ site.navimmo }}</a></li>
@@ -56,9 +58,9 @@
               <li><a href="/leistungen/weitere">{{ site.navweitere }}</a></li>
             </ul>
           </li>
-          <li><a href="/qualitaetssiegel/"><i class="fa fa-2x fa-certificate hidden-xs hidden-sm"></i> {{ site.navquali }}</a></li>
-          <li><a href="/onlinemagazin/"><i class="fa fa-2x fa-newspaper-o hidden-xs hidden-sm"></i> {{ site.navnews }}</a></li>
-          <li><a href="/kontakt/"><i class="fa fa-2x fa-paper-plane hidden-xs hidden-sm"></i> {{ site.navkontakt }}</a></li>
+          <li {% if current[1] == 'qualitaetssiegel' %}class='active'{% endif %}><a href="/qualitaetssiegel/"><i class="fa fa-2x fa-certificate hidden-xs hidden-sm"></i> {{ site.navquali }}</a></li>
+          <li {% if current[1] == 'onlinemagazin' %}class='active'{% endif %}><a href="/onlinemagazin/"><i class="fa fa-2x fa-newspaper-o hidden-xs hidden-sm"></i> {{ site.navnews }}</a></li>
+          <li {% if current[1] == 'kontakt' %}class='active'{% endif %}><a href="/kontakt/"><i class="fa fa-2x fa-paper-plane hidden-xs hidden-sm"></i> {{ site.navkontakt }}</a></li>
         </ul>
       </div>
   </div>

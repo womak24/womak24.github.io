@@ -55,14 +55,14 @@ $(document).ready(function () {
     });
 
     // Highlight current Menu item    
-    $.each($('#navbar').find('li'), function () {
-        $(this).toggleClass('active',
-            $(this).find('a').attr('href') == window.location.pathname);
-    });
-    $.each($('#footer-navigation').find('li'), function () {
-        $(this).toggleClass('active',
-            $(this).find('a').attr('href') == window.location.pathname);
-    });
+//    $.each($('#navbar').find('li'), function () {
+//        $(this).toggleClass('active',
+//            $(this).find('a').attr('href') == window.location.pathname);
+//    });
+//    $.each($('#footer-navigation').find('li'), function () {
+//        $(this).toggleClass('active',
+//            $(this).find('a').attr('href') == window.location.pathname);
+//    });
 });
 
 // Move Menu up when clicking it
