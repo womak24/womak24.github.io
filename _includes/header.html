@@ -1,4 +1,4 @@
-<header class="hidden-xs tagline text-right">
+<header class="hidden-xs hidden-sm tagline text-right">
   <div class="container">
     <a href="/schaden-melden/" class="btn btn-success btn-sm navbar-btn"><i class="fa fa-bolt"></i> Schaden melden</button>
     <a href="tel:0049353348260" class="btn btn-info btn-sm navbar-btn"><i class="fa fa-phone"></i> 03533 48260</a>
@@ -6,7 +6,7 @@
   </div>
 </header>
 
-<header class="visible-xs">
+<header class="visible-xs-block visible-sm-block">
   <div class="container">
     <a href="/">
       <img id="logo" class="img-responsive center-block" src="{{ site.baseurl }}/img/womak-logo_medium-rgb-72dpi.png">
@@ -19,34 +19,34 @@
       <div class="navbar-header">
         <a class="navbar-brand hidden-xs hidden-sm" href="/">
           <img alt="Womak 24 GmbH" src="{{site.baseurl}}/img/womak-logo_medium-rgb-72dpi.png">
-        </a> 
+        </a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" id="navbar-toggle-button-id">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-txt">MENÜ</span><i class="fa fa-lg fa-bars"></i>
         </button>
-      <button type="button" class="btn btn-success btn-sm navbar-btn visible-xs"><i class="fa fa-bolt"></i> Schaden melden</button> 
+        <button type="button" class="btn btn-success btn-sm navbar-btn visible-xs-block visible-sm-block"><i class="fa fa-bolt"></i> Schaden melden</button> 
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li class="visible-xs">
+          <li class="visible-xs-block visible-sm-block">
             <p class="navbar-btn">
               <a href="tel:0049353348260" class="btn btn-info btn-sm"><i class="fa fa-phone"></i> 03533 48260</a>
             </p>
           </li>
-          <li class="visible-xs">
+          <li class="visible-xs-block visible-sm-block">
             <p class="navbar-btn">
                 <script src="{{ site.baseurl }}/js/email-header.js"></script>
                 <noscript>Bitte Javascript aktivieren.</noscript>
             </p>
           </li>
-          <li><a href="/" class="hidden-sm hidden-md hidden-lg">Startseite</a></li>
-          <li><a href="/about/"><i class="fa fa-2x fa-info hidden-xs "></i> {{ site.navabout }}</a></li>
+          <li><a href="/" class="hidden-md hidden-lg">Startseite</a></li>
+          <li><a href="/about/"><i class="fa fa-2x fa-info hidden-xs hidden-sm"></i> {{ site.navabout }}</a></li>
           <li class="dropdown">
             {% comment %} Desktop Version (menu on hover) {% endcomment %}
-            <a href="/leistungen/" class="dropdown-toggle hidden-xs" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs "></i> {{ site.navleistungen }} <span class="caret"></span></a>
+            <a href="/leistungen/" class="dropdown-toggle hidden-xs hidden-sm" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs hidden-sm"></i> {{ site.navleistungen }} <span class="caret"></span></a>
             {% comment %} Mobile Version (menu on klick) {% endcomment %}
-            <a href="leistungen" class="visible-xs dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs "></i> {{ site.navleistungen }} <span class="caret"></span></a>
+            <a href="leistungen" class="visible-xs-block visible-sm-block dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs hidden-sm"></i> {{ site.navleistungen }} <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="/leistungen/risikoanalyse">{{ site.navrisiko }}</a></li>
               <li><a href="/leistungen/immobilienvs">{{ site.navimmo }}</a></li>
@@ -56,9 +56,9 @@
               <li><a href="/leistungen/weitere">{{ site.navweitere }}</a></li>
             </ul>
           </li>
-          <li><a href="/qualitaetssiegel/"><i class="fa fa-2x fa-certificate hidden-xs "></i> {{ site.navquali }}</a></li>
-          <li><a href="/onlinemagazin/"><i class="fa fa-2x fa-newspaper-o hidden-xs "></i> {{ site.navnews }}</a></li>
-          <li><a href="/kontakt/"><i class="fa fa-2x fa-paper-plane hidden-xs "></i> {{ site.navkontakt }}</a></li>
+          <li><a href="/qualitaetssiegel/"><i class="fa fa-2x fa-certificate hidden-xs hidden-sm"></i> {{ site.navquali }}</a></li>
+          <li><a href="/onlinemagazin/"><i class="fa fa-2x fa-newspaper-o hidden-xs hidden-sm"></i> {{ site.navnews }}</a></li>
+          <li><a href="/kontakt/"><i class="fa fa-2x fa-paper-plane hidden-xs hidden-sm"></i> {{ site.navkontakt }}</a></li>
         </ul>
       </div>
   </div>

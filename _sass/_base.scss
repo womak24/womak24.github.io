@@ -19,7 +19,7 @@ $footer-text-color: $gray-dark;
   padding-right: $padding-base-horizontal;
 }
 
-.navbar-header {
+.navbar-default {
   border-bottom: 1px solid white;
 }
 
@@ -304,6 +304,7 @@ h4 {
   }
 }
 
+
 // MEDIA QUERIES ***
 
 /* Extra small devices (phones, less than 768px) */
@@ -317,18 +318,16 @@ h4 {
   }
 }
 
-/* Extra small to Small Devices <768px */
-@media (max-width: $screen-sm-min) {
-  .subside { // Content padding in subside when small 
-    .content {
-      padding-left: $padding-base-horizontal;
-      padding-right: $padding-base-horizontal;
-    }  
-  }    
-}
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
+
+.subside { // Content padding in subside when small 
+  .content {
+    padding-left: $padding-base-horizontal;
+    padding-right: $padding-base-horizontal;
+  }  
+}
 
 // Slider Arrows on Desktop Slider ist left and right
 .slick-next,
@@ -349,7 +348,41 @@ h4 {
 .slick-next:before {
   font-size: $font-size-h2;
 }
+    
+// Slider
+.slider-immo,
+.slider-analyse,
+.slider-do,
+.slider-lohn,
+.slider-honorar,
+.slider-weitere {
+  background-position: center center;
+  background-size: cover;
+  height: 300px;
+}
 
+.slider-content {
+  h4 {
+    font-size: $font-size-h3;
+    padding-bottom: $line-height-computed/2;
+  }
+  font-size: $font-size-large;
+}
+
+// change back: make line not over whole screen
+.first-footer-item {
+  padding-left: $padding-base-horizontal;
+  padding-right: $padding-base-horizontal;
+
+  h4, ul {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) {
 
 // START - Sticky Navigation
 // http://codepen.io/Guilh/pen/JLKbn
@@ -395,75 +428,36 @@ header {
 // END - Sticky Navigation
 
 
-  // Navigation in Desktop-Version
-  .navbar-default {
-    background-color: white;
-    height: (5+1) * $line-height-computed;
-     
-      
-    .navbar-nav > li > a {
-        color: $text-color;
-        margin-top: 2 * $line-height-computed;
-
-        &:hover, &:focus { color: $brand-primary; }
-        
-        i {
-          display: block;
-          text-align: center;
-        }
-    }
-      
-    .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
-        color: $brand-primary;
-        background-color: white; 
-    }
-      
-  }
-
-  // Dropdown in Nav on hover instead of click
-  // http://stackoverflow.com/questions/16214326/bootstrap-dropdown-with-hover
-  .dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; // remove the gap so it doesn't close
- }
+// Navigation in Desktop-Version
+.navbar-default {
+  background-color: white;
+  height: (5+1) * $line-height-computed;
     
-  // Slider
-  .slider-immo,
-  .slider-analyse,
-  .slider-do,
-  .slider-lohn,
-  .slider-honorar,
-  .slider-weitere {
-    background-position: center center;
-    background-size: cover;
-    height: 300px;
-  }
+  .navbar-nav > li > a {
+      color: $text-color;
+      margin-top: 2 * $line-height-computed;
 
-  .slider-content {
-    h4 {
-      font-size: $font-size-h3;
-      padding-bottom: $line-height-computed/2;
-    }
-    font-size: $font-size-large;
-  }
-
-  // change back: make line not over whole screen
-  .first-footer-item {
-    padding-left: $padding-base-horizontal;
-    padding-right: $padding-base-horizontal;
-
-    h4, ul {
-      padding-left: 0;
-      padding-right: 0;
-    }
+      &:hover, &:focus { color: $brand-primary; }
+      
+      i {
+        display: block;
+        text-align: center;
+      }
   }
     
- 
+  .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+      color: $brand-primary;
+      background-color: white; 
+  }
+    
 }
 
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: $screen-md-min) {
-
+// Dropdown in Nav on hover instead of click
+// http://stackoverflow.com/questions/16214326/bootstrap-dropdown-with-hover
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; // remove the gap so it doesn't close
+}
 }
 
 /* Large devices (large desktops, 1200px and up) */
