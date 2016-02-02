@@ -43,7 +43,6 @@ $(document).ready(function () {
     ]
     });
 
-
     // Hide Dropdown when clicking somewhere    
     // http://stackoverflow.com/a/23769601/2596452    
     $(document).click(function (event) {
@@ -53,16 +52,6 @@ $(document).ready(function () {
             $("button.navbar-toggle").click();
         }
     });
-
-    // Highlight current Menu item    
-//    $.each($('#navbar').find('li'), function () {
-//        $(this).toggleClass('active',
-//            $(this).find('a').attr('href') == window.location.pathname);
-//    });
-//    $.each($('#footer-navigation').find('li'), function () {
-//        $(this).toggleClass('active',
-//            $(this).find('a').attr('href') == window.location.pathname);
-//    });
 });
 
 // Move Menu up when clicking it
@@ -74,7 +63,6 @@ $("#navbar-toggle-button-id").on('click', function (e) {
     $('html, body').animate({
         scrollTop: $("#navbar-toggle-button-id").offset().top
     }, 200); // zeit
-
 });
 
 // Sticky top bar/affix
