@@ -1,17 +1,16 @@
 ---
 layout: default 
 permalink: /Schaden-melden/index.php 
-# http://jekyllrb.com/docs/permalinks/
+# http://jekyllrb.com/docs/permalinks/ 
 ---
-
 {% raw %}
 <?php
     // http://www.html-form-guide.com/email-form/php-email-form-attachment.html#pearinstall
      function mail_att($to,$subject,$message,$attachments)
    {
-   $absender = "Womak Schaden melden";
+   $absender = "Schaden melden Womak24";
    $absender_mail = "formular@womak.de";
-   $reply = "formular@womak.de";
+   $reply = "nicht-antworten@womak.de";
  
    $mime_boundary = "-----=" . md5(uniqid(mt_rand(), 1));
  
@@ -117,12 +116,12 @@ permalink: /Schaden-melden/index.php
             }
         }
         
-
+        // Settings
         $from = 'kontakt@Womak24.de'; 
         $to = 'hackberd@gmail.com'; 
-        $subject = 'Kontaktanfrage Womak24';
+        $subject = 'Schaden melden Womak24';
         
-        $body = "Von: $name\n Firma: $firm\n Schadenszeitpunkt: $time\n Kontakt: $email\n Nachricht:\n $message";
+        
  
         // Check if name has been entered
         if (!$_POST['name']) {
@@ -131,7 +130,7 @@ permalink: /Schaden-melden/index.php
         
         // Check if email has been entered and is valid
         if (!$_POST['email']) {
-            $errEmail = 'Bitte geben sie eine Kontaktdaten an';
+            $errEmail = 'Bitte geben sie Kontaktdaten an.';
         }
         
         //Check if message has been entered
@@ -156,6 +155,10 @@ permalink: /Schaden-melden/index.php
 				    $attachments["size"] = $_FILES['picture']['size'];
 				    $attachments["type"] = $_FILES['picture']['type'];
 				    $attachments["data"] = implode("",file($_FILES['picture']['tmp_name']));
+
+                    $body = "Von: $name <br><br> Firma: $firm  <br><br> Schadenszeitpunkt: $time  <br><br> Kontakt: $email  <br><br>  Nachricht:  <br><br> $message";
+
+
 				    $success = mail_att($to,$subject,$body,$attachments);
                 } else {
                     //echo "no send";
@@ -164,6 +167,8 @@ permalink: /Schaden-melden/index.php
 		       
 		    } else {
                 //echo "send no att";
+                $body = "Von: $name \r\n\r\n Firma: $firm\r\n\r\n Schadenszeitpunkt: $time\r\n\r\n Kontakt: $email\r\n\r\n Nachricht:\r\n\r\n $message";
+
 		        $success = mail ($to, $subject, $body, $from);
 		    }
 
@@ -177,56 +182,58 @@ permalink: /Schaden-melden/index.php
     }
 
 ?>
-{% endraw %}
-<div class="container">
-    <h1 class="slogan text-center">Schaden melden</h1>
-    <form role="form"  data-toggle="validator" method="post" action="index.php" enctype="multipart/form-data">
-        <div class="form-group">
-        <div class="col-sm-10 col-sm-offset-2">
-             {% raw %}  <?php echo $result; ?>    {% endraw %}
-        </div>
-    </div>
-    <div class="form-group required">
-        <label for="name" class="control-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Vor- und Nachname" value="{% raw %}<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '' ?> {% endraw %}" required="required">
-        {% raw %} 
-            <?php if (isset($errName)) {
+    {% endraw %}
+    <div class="container">
+        <h1 class="slogan text-center">Schaden melden</h1>
+        <form role="form" data-toggle="validator" method="post" action="index.php" enctype="multipart/form-data">
+            <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                    {% raw %}
+                    <?php echo $result; ?> {% endraw %}
+                </div>
+            </div>
+            <div class="form-group required">
+                <label for="name" class="control-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Vor- und Nachname" value="{% raw %}<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '' ?> {% endraw %}" required="required"> {% raw %}
+                <?php if (isset($errName)) {
         echo "<p class='text-danger'>$errName</p>";
 } 
-        ?> 
-        {% endraw %}
+        ?>
+                    {% endraw %}
+            </div>
+            <div class="form-group">
+                <label for="firm" class="control-label">Firma</label>
+                <input type="text" class="form-control" id="firm" name="firm" placeholder="Firma" value="{% raw %}<?php echo isset($_POST['firm']) ? htmlspecialchars($_POST['firm']) : '' ?> {% endraw %}">
+            </div>
+            <div class="form-group required">
+                <label for="email" class="control-label">Kontaktdaten für eine schnellste Kontaktaufnahme durch uns</label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Email oder Telefonnummer" value="{% raw %}<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?> {% endraw %}" required="required"> {% raw %}
+                <?php echo "<p class='text-danger'>$errEmail</p>";?> {% endraw %}
+            </div>
+            <div class="form-group required">
+                <label for="message" class="control-label">Kurze Schadensschilderung</label>
+                <textarea class="form-control" rows="4" name="message" id="message" required="required">{% raw %}
+                    <?php echo isset($_POST['message']) ? htmlspecialchars($_POST['message']) : '' ?> {% endraw %}</textarea>
+                {% raw %}
+                <?php echo "<p class='text-danger'>$errMessage</p>";?> {% endraw %}
+            </div>
+            <div class="form-group">
+                <label for="picture" class="control-label">Foto vom Schaden</label>
+                <input type="file" class="form-control" id="picture" name="picture" value=""> {% raw %}
+                <?php echo "<p class='text-danger'>$errors</p>";?> {% endraw %}
+            </div>
+            <div class="form-group">
+                <label for="time" class="control-label">Schadenszeitpunkt</label>
+                <input type="datetime" class="form-control" id="time" name="time" placeholder="Zeitpunkt" value="{% raw %}<?php echo isset($_POST['time']) ? htmlspecialchars($_POST['time']) : '' ?> {% endraw %}">
+            </div>
+            <div class="form-group required">
+                <label for="human" class="control-label">2 + 3 = ?</label>
+                <input type="text" class="form-control" id="human" name="human" placeholder="Ihre Antwort" required="required" value="{% raw %}<?php echo isset($_POST['human']) ? htmlspecialchars($_POST['human']) : '' ?> {% endraw %}"> {% raw %}
+                <?php echo "<p class='text-danger'>$errHuman</p>";?> {% endraw %}
+            </div>
+            <div class="form-group">
+                <input id="submit" name="submit" type="submit" value="Abschicken" class="btn btn-primary">
+            </div>
+
+        </form>
     </div>
-    <div class="form-group">
-        <label for="firm" class="control-label">Firma</label>
-        <input type="text" class="form-control" id="firm" name="firm" placeholder="Firma" value="{% raw %}<?php echo isset($_POST['firm']) ? htmlspecialchars($_POST['firm']) : '' ?> {% endraw %}">
-    </div>
-    <div class="form-group required">
-        <label for="email" class="control-label">Kontaktdaten für eine schnellste Kontaktaufnahme durch uns</label>
-        <input type="text" class="form-control" id="email" name="email" placeholder="Email oder Telefonnummer" value="{% raw %}<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?> {% endraw %}" required="required">
-        {% raw %} <?php echo "<p class='text-danger'>$errEmail</p>";?> {% endraw %}
-    </div>
-    <div class="form-group required">
-        <label for="message" class="control-label">Kurze Schadensschilderung</label>
-        <textarea class="form-control" rows="4" name="message" id="message" required="required">{% raw %}<?php echo isset($_POST['message']) ? htmlspecialchars($_POST['message']) : '' ?> {% endraw %}</textarea>
-        {% raw %}  <?php echo "<p class='text-danger'>$errMessage</p>";?>  {% endraw %}
-    </div>
-    <div class="form-group">
-        <label for="picture" class="control-label">Foto vom Schaden</label>
-        <input type="file" class="form-control" id="picture" name="picture"  value="">
-        {% raw %}   <?php echo "<p class='text-danger'>$errors</p>";?>  {% endraw %}
-    </div>
-        <div class="form-group">
-        <label for="time" class="control-label">Schadenszeitpunkt</label>
-        <input type="datetime" class="form-control" id="time" name="time" placeholder="Zeitpunkt" value="{% raw %}<?php echo isset($_POST['time']) ? htmlspecialchars($_POST['time']) : '' ?> {% endraw %}">
-    </div>
-    <div class="form-group required">
-        <label for="human" class="control-label">2 + 3 = ?</label>
-        <input type="text" class="form-control" id="human" name="human" placeholder="Ihre Antwort" required="required" value="{% raw %}<?php echo isset($_POST['human']) ? htmlspecialchars($_POST['human']) : '' ?> {% endraw %}">
-        {% raw %}   <?php echo "<p class='text-danger'>$errHuman</p>";?>  {% endraw %}
-    </div>
-    <div class="form-group">
-        <input id="submit" name="submit" type="submit" value="Abschicken" class="btn btn-primary">
-    </div>
-    
-</form>
-</div>
