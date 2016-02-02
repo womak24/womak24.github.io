@@ -105,7 +105,9 @@ h2.slogan {
 
 // Subside
 .subside {
-  padding-bottom: 2 * $line-height-computed;
+  padding-right: 0px;
+  padding-bottom: $line-height-computed;
+  padding-left: 0px;
 
   h2 { // override h4 für supertitel (Über uns/sidebar)
     border-bottom: $border-width solid $brand-primary;
@@ -113,6 +115,12 @@ h2.slogan {
     font-size: $font-size-large;
     @extend .text-uppercase; 
   }
+}
+
+.subside h2,
+.subside-content {
+  padding-right: $padding-base-horizontal; 
+  padding-left: $padding-base-horizontal;
 }
 
 .subside-img {
@@ -312,15 +320,20 @@ h4 {
   }
 }
 
-
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
 
-.subside { // Content padding in subside when small 
-  .content {
-    padding-left: $padding-base-horizontal;
-    padding-right: $padding-base-horizontal;
-  }  
+//Subside
+
+.subside {
+  padding-right: $padding-base-horizontal;
+  padding-left: $padding-base-horizontal;
+}
+
+.subside h2,
+.subside-content {
+  padding-right: 0px; 
+  padding-left: 0px;
 }
 
 // Slider Arrows on Desktop Slider ist left and right
