@@ -80,6 +80,6 @@ $("#navbar-toggle-button-id").on('click', function (e) {
 // Sticky top bar/affix
 $('#navbar').affix({
   offset: {
-    top: function(){return $('header').height();}
+    top: 5//function(){return $('header').height();}
   }
 })
