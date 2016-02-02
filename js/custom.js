@@ -76,3 +76,10 @@ $("#navbar-toggle-button-id").on('click', function (e) {
     }, 200); // zeit
 
 });
+
+// Sticky top bar/affix
+$('#navbar').affix({
+  offset: {
+    top: function(){return $('header').height();}
+  }
+})

@@ -2,6 +2,13 @@ $border-width: 3px;
 $footer-bg-color: $gray-lighter;
 $footer-text-color: $gray-dark;    
 
+$header-height-mobile: 155px + 30px;
+$header-height-desktop: 60px;    
+
+$navbar-height-desktop: (5+1) * $line-height-computed;// 130px + 21px; // 130 navbar height, 21 margin of navbar to bottom
+$navbar-height-desktop-collapsed: 84px;
+$navbar-height-mobile: 67px + 21px;
+
 // Tagline - blue bar at very top (desktop only)
 .tagline { background-color: $brand-primary; }
 
@@ -24,40 +31,27 @@ $footer-text-color: $gray-dark;
 }
 
 // START - Sticky Navigation
-// http://codepen.io/Guilh/pen/JLKbn
-// https://teamtreehouse.com/community/forum-tip-create-a-sticky-navigation-with-css-and-jquery-2
-
+// http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_scrollspy_affix&stacked=h
+// MOBILE
 body {
-  margin: 0;
-  padding-top: 155px + 30px;
+  position: relative; 
+}
+.affix {
+  top:0;
+  width: 100%;
+  z-index: 9999 !important;
+}
+
+.affix ~ .main {
+  position: relative;
+  padding-top: $navbar-height-mobile;
 }
 
 header {
-  height: 155px;
+  height: $header-height-mobile;
   padding-top: 15px;
 }
 
-.navbar,
-.main {
-  position: relative; 
-}
-.navbar { margin-bottom: -60px; }
-
-header,
-.main-nav-scrolled {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-.main-nav-scrolled {
-    opacity: 0.90;
-}
-
-.main {
-  background: #fff;
-  padding-top: 60px; // 0 damit bilder direkt abschließen mit menü
-}
 // END - Sticky Navigation
 
 // Buttons
@@ -383,33 +377,32 @@ h4 {
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: $screen-md-min) {
-
-// START - Sticky Navigation
-// http://codepen.io/Guilh/pen/JLKbn
-// https://teamtreehouse.com/community/forum-tip-create-a-sticky-navigation-with-css-and-jquery-2
-
-body {
-  padding-top: 60px; // height of tagline
+    
+// START - Sticky Navigation    
+// http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_scrollspy_affix&stacked=h
+.main {
+  margin-top: 21px;
 }
 
 header {
-  height: 60px; // height of tagline
+  height: $header-height-desktop; // height of tagline
   padding-top: 0px;
 }
 
 .navbar {
-  margin-bottom: -126px; // height of navigation
+  margin-bottom: 0px; // height of navigation
 }
 
-.main {
-  padding-top: 126px + $line-height-computed; // height of navigation
+.affix ~ .main {
+  position: relative;
+  padding-top: $navbar-height-desktop ;
 }
-
-.navbar-default.main-nav-scrolled {
-  height: 4 * $line-height-computed;
+       
+.navbar-default.affix {
+  height: $navbar-height-desktop-collapsed;
   border-bottom: 1px solid $brand-primary;
   opacity: 0.95;
-
+    
   .navbar-brand {
     padding-top: $line-height-computed/2;
   }
@@ -424,14 +417,13 @@ header {
     }
   }
 }
-
 // END - Sticky Navigation
 
 
 // Navigation in Desktop-Version
 .navbar-default {
   background-color: white;
-  height: (5+1) * $line-height-computed;
+  //height: (5+1) * $line-height-computed;
     
   .navbar-nav > li > a {
       color: $text-color;
