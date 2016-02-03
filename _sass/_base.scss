@@ -13,7 +13,14 @@ $navbar-height-mobile: 67px + 21px;
 .tagline { background-color: $brand-primary; }
 
 // Logo
-#logo { max-height: 155px; }
+.logo {
+  background-image: url(../img/logo.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 155px;
+}
+
 .navbar-brand img { height: 5 * $line-height-computed; }
 
 // Navigation
@@ -428,8 +435,6 @@ header {
     padding-top: $line-height-computed/2;
   }
 
-  img { height: 3 * $line-height-computed; }
-
   .navbar-nav > li > a {
     margin-top: $line-height-computed/2;
 
@@ -463,6 +468,20 @@ header {
       background-color: white; 
   }
     
+}
+
+.logo {
+  height: 5 * $line-height-computed;
+  width: 196px;
+  background-image: url(../img/logo.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  .affix & {
+    background-image: url(../img/logo-no-text.png);
+    height: 3 * $line-height-computed;
+  }
 }
 
 // Dropdown in Nav on hover instead of click
