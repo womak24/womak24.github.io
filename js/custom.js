@@ -1,6 +1,4 @@
-
 $(document).ready(function () {
-
     // Affix Navigation set offset depending on mobile or desktop version
     var mq = window.matchMedia( "(min-width: 992px)" );
     if (mq.matches) {
@@ -70,21 +68,3 @@ $(document).ready(function () {
         }, 200); // zeit
     });
 });
-
-// Move Menu up when clicking it
-// http://stackoverflow.com/questions/6677035/jquery-scroll-to-element
-$("#navbar-toggle-button-id").on('click', function (e) {
-    // prevent default anchor click behavior
-    e.preventDefault();
-    // animate
-    $('html, body').animate({
-        scrollTop: $("#navbar-toggle-button-id").offset().top
-    }, 200); // zeit
-});
-
-// Sticky top bar/affix
-$('#navbar').affix({
-  offset: {
-    top: 5//function(){return $('header').height();}
-  }
-})
