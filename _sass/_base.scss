@@ -468,7 +468,8 @@ header {
     color: $text-color;
     margin-top: 2 * $line-height-computed;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: $brand-primary;
       i { color: $brand-primary; }
     }
@@ -480,9 +481,13 @@ header {
     }
   }
     
-  .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
-      background-color: white; 
-      color: $brand-primary;
+  .navbar-nav > .active > a,
+  .navbar-nav > .active > a:hover,
+  .navbar-nav > .active > a:focus {
+    background-color: white; 
+    color: $brand-primary;
+
+    i { color: $brand-primary; }
   }
     
 }
