@@ -9,6 +9,10 @@ $navbar-height-desktop: (5+1) * $line-height-computed;// 130px + 21px; // 130 na
 $navbar-height-desktop-collapsed: 84px;
 $navbar-height-mobile: 67px + 21px;
 
+body {
+  font-weight: 300;
+}
+
 // Tagline - blue bar at very top (desktop only)
 .tagline { background-color: $brand-primary; }
 
@@ -418,7 +422,7 @@ header {
 }
 
 .navbar {
-  margin-bottom: 0px; // height of navigation
+  margin-bottom: 0px !important; // height of navigation
 }
 
 .affix ~ .main {
