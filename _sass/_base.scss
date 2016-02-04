@@ -442,6 +442,7 @@ header {
   .navbar-nav > li > a {
     margin-top: $line-height-computed/2;
 
+
     i {
         display: none;
     }
@@ -453,23 +454,27 @@ header {
 // Navigation in Desktop-Version
 .navbar-default {
   background-color: white;
-  //height: (5+1) * $line-height-computed;
     
   .navbar-nav > li > a {
-      color: $text-color;
-      margin-top: 2 * $line-height-computed;
+    text-transform: uppercase;
+    color: $text-color;
+    margin-top: 2 * $line-height-computed;
 
-      &:hover, &:focus { color: $brand-primary; }
+    &:hover, &:focus {
+      color: $brand-primary;
+      i { color: $brand-primary; }
+    }
       
-      i {
-        display: block;
-        text-align: center;
-      }
+    i {
+      display: block;
+      text-align: center;
+      color: $gray-light;
+    }
   }
     
   .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
-      color: $brand-primary;
       background-color: white; 
+      color: $brand-primary;
   }
     
 }
@@ -484,7 +489,7 @@ header {
 
   .affix & {
     background-image: url(../img/logo-no-text.png);
-    height: 3 * $line-height-computed;
+    height: 2 * $line-height-computed;
   }
 }
 
