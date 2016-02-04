@@ -274,13 +274,21 @@ h4 {
 
 // Schaden
 .schaden {
-  color: white;
+  background-color: $brand-primary;
   margin-bottom: 2 * $line-height-computed;
+  margin-top: 2 * $line-height-computed;
 }
 
-.schaden-content,
-.schaden-img {
-  background-color: $brand-primary;
+img.schaden-img {
+  position: absolute;
+  bottom: 0;
+  left: $padding-base-horizontal;
+  width: 30%;
+}
+
+.schaden-content {
+  color: white;
+  padding-bottom: $line-height-computed;
 }
 
 // First Footer
