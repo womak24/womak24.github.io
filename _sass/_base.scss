@@ -141,11 +141,16 @@ h2.slogan {
 }
 
 .subside-img-text {
-    color: $text-color;
-    font-weight: bold;
+  margin-top: $line-height-computed;
+  
+  span {
     background: white;
+    color: $text-color;
+    font-size: $font-size-h4;
+    font-weight: 600;
     opacity: 0.9;
-    margin-left: $padding-base-horizontal;
+    padding: 2px;
+  }
 }
 
 // Leistungen in Subside
