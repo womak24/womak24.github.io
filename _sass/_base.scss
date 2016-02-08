@@ -25,6 +25,8 @@ body {
   height: 155px;
 }
 
+.navbar { margin-bottom: 0px; }
+
 .navbar-brand img { height: 5 * $line-height-computed; }
 
 // Navigation
@@ -112,7 +114,6 @@ h2.slogan {
     .fa-ul { margin-bottom: 0px; }
   }
 }
-
 
 // Subside
 .subside {
@@ -437,7 +438,7 @@ header {
 }
 
 .navbar {
-  margin-bottom: 0px !important; // height of navigation
+  margin-bottom: 0px !important;
 }
 
 .affix ~ .main {

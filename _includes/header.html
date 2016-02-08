@@ -59,8 +59,18 @@
             </ul>
           </li>
           <li {% if current[1] == 'qualitaetssiegel' %}class='active'{% endif %}><a href="/qualitaetssiegel/"><i class="fa fa-2x fa-certificate hidden-xs hidden-sm"></i> {{ site.navquali }}</a></li>
-          <li {% if current[1] == 'onlinemagazin' %}class='active'{% endif %}><a href="/onlinemagazin/"><i class="fa fa-2x fa-newspaper-o hidden-xs hidden-sm"></i> {{ site.navnews }}</a></li>
-          <li {% if current[1] == 'kontakt' %}class='active'{% endif %}><a href="/kontakt/"><i class="fa fa-2x fa-paper-plane hidden-xs hidden-sm"></i> {{ site.navkontakt }}</a></li>
+          <li {% if current[1] == 'kindenmagazin' %}class='active'{% endif %}><a href="/kundenmagazin/"><i class="fa fa-2x fa-newspaper-o hidden-xs hidden-sm"></i> {{ site.navnews }}</a></li>
+          <li class="dropdown {% if current[1] == 'kontakt' %}active{% endif %}">
+            {% comment %} Desktop Version (menu on hover) {% endcomment %}
+            <a href="/kontakt/" class="dropdown-toggle hidden-xs hidden-sm" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-paper-plane hidden-xs hidden-sm"></i> {{ site.navkontakt }}<span class="caret"></span></a>
+            {% comment %} Mobile Version (menu on klick) {% endcomment %}
+            <a href="/kontakt/" class="visible-xs-block visible-sm-block dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-paper-plane hidden-xs hidden-sm"></i> {{ site.navkontakt }} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/schaden-melden/index.php">{{ site.navschaden }}</a></li>
+              <li><a href="/kontakt/elsterwerda">{{ site.navelsterwerda }}</a></li>
+              <li><a href="/kontakt/berlin">{{ site.navberlin }}</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
   </div>

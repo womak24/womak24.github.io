@@ -2,8 +2,8 @@
 
 category: home
 icon: fa-info
-name: Onlinemagazin
+name: Kundenmagazin
 text: Erfahren Sie in unserem Online-Kundenmagazin die neuesten Entwicklungen der Versicherungsbranche.
-link: /onlinemagazin/
+link: /kundenmagazin/
 
 ---
