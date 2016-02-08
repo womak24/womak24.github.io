@@ -91,7 +91,7 @@ h2.slogan {
 // Accordeon/Panel
 
 // Accordeon/Panel Heading
-#accordion {
+.panel {
   a {
     display: block;
     &:focus, &:hover { text-decoration: none; }
@@ -112,6 +112,12 @@ h2.slogan {
   .panel-heading {
     border: 2px solid $gray-lighter;
     .fa-ul { margin-bottom: 0px; }
+  }
+
+  .panel-body a:hover,
+  .panel-body a:focus {
+    text-decoration: underline;
+    background-color: transparent;
   }
 }
 
