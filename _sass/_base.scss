@@ -127,6 +127,8 @@ h2.slogan {
     font-size: $font-size-large;
     @extend .text-uppercase; 
   }
+
+  h4 { margin-top: $line-height-computed; }
 }
 
 .subside h2,

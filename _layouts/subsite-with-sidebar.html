@@ -21,38 +21,11 @@
       </div>
 
       <!-- Sidebar only desktop version-->
-      {% if page.sidebar-items %}  
       <div class="col-md-4 sidebar hidden-xs">
-        <h2>{{ page.sidebar-title }}</h2>
-
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-          {% assign post_index = 1 %}
-          <!-- https://talk.jekyllrb.com/t/how-to-retrieve-the-current-post-index-number-in-jekyll/814/5 -->
-          {% for item in page.sidebar-items %}
-          <div class="panel panel-default">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ post_index }}" aria-expanded="true" aria-controls="collapse{{ post_index }}">
-              <div class="panel-heading" role="tab" id="heading{{ post_index }}">
-                <h3 class="panel-title">
-                  <ul class="fa-ul">
-                    <li><i class="fa-li fa {{ item.icon }}"></i> {{ item.title }}</li>
-                  </ul>
-                </h3>
-              </div>
-            </a>
-            <div id="collapse{{ post_index }}" class="panel-collapse collapse {% if post_index == 1 %}in{% endif %}" role="tabpanel" aria-labelledby="heading{{ post_index }}">
-              <div class="panel-body">
-                {{ item.text }}
-              </div>
-            </div>
-          </div>
-          {% assign post_index = post_index | plus: 1 %}
-          {% endfor %}
-        </div>
-      </div>
-    {% endif %}   
+        {% include gruende.html %}
+      </div> 
 
     </div>
-
 
   </div>
   

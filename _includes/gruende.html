@@ -1,2 +1,25 @@
-<h4>3 gute Gründe, die für uns sprechen</h4>
-<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+<h4>Gute Gründe</h4>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+{% assign post_index = 1 %}
+<!-- https://talk.jekyllrb.com/t/how-to-retrieve-the-current-post-index-number-in-jekyll/814/5 -->
+{% for post in site.categories.gruende %}
+  <div class="panel panel-default">
+    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ post_index }}" aria-expanded="true" aria-controls="collapse{{ post_index }}">
+      <div class="panel-heading" role="tab" id="heading{{ post_index }}">
+        <h3 class="panel-title">
+          <ul class="fa-ul">
+            <li><i class="fa-li fa {{ post.icon }}"></i> {{ post.heading }}</li>
+          </ul>
+        </h3>
+      </div>
+    </a>
+    <div id="collapse{{ post_index }}" class="panel-collapse collapse {% if post_index == 1 %}in{% endif %}" role="tabpanel" aria-labelledby="heading{{ post_index }}">
+      <div class="panel-body">
+        {{ post.text }}
+      </div>
+    </div>
+  </div>
+  {% assign post_index = post_index | plus: 1 %}
+  {% endfor %}
+</div>
