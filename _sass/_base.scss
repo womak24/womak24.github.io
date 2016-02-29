@@ -14,7 +14,14 @@ body {
 }
 
 // Tagline - blue bar at very top (desktop only)
-.tagline { background-color: $brand-primary; }
+.tagline {
+  background-color: $brand-primary;
+
+  span {
+    line-height: $header-height-desktop;
+    color: white;
+  }
+}
 
 // Logo
 .logo {
@@ -522,7 +529,7 @@ header {
 .logo {
   height: 5 * $line-height-computed;
   width: 196px;
-  background-image: url(../img/logo.png);
+  background-image: url(../img/logo-no-text.png);
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
