@@ -19,12 +19,13 @@
 
       <div class="col-md-8">
         <h2>{{ page.right-title }}</h2>
+        <p>{{ page.right-text }}<p>
         <div class="subside-content">
           {% if page.right-items %}
             <dl class="dl-horizontal">
             {% for item in page.right-items %}
               <dt>{{ item.title }}</dt>
-              <dd>{{ item.text }}</dd>
+              <dd style="background-image: url({{ site.baseurl }}/img/open/active-{{ item.img }}); background-size: cover;"><img src="{{ site.baseurl }}/img/open/{{ item.img }}"></dd>
             {% endfor %}
             </dl>
           {% endif %}

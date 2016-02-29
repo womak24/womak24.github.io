@@ -376,6 +376,18 @@ img.schaden-img {
 .subside-content {
   padding-right: 0px; 
   padding-left: 0px;
+
+  dt {
+    margin-top: 5px;
+  }
+
+  dd img {
+    width: 100%;
+  }
+
+  dd:hover img {
+    visibility: hidden;
+  }
 }
 
 // Slider Arrows on Desktop Slider ist left and right
