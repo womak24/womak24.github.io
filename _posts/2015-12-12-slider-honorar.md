@@ -2,8 +2,8 @@
 
 category: slider
 sliderclass: slider-honorar
-heading: Honorarberatung
-text: Keine versteckte Kosten mehr!<span class='spacer'></span><br /><span class='spacer'></span>Kosten Minimierung = Gewinn Optimierung!
+heading: Beratung Altersvorsorge
+text: Individuelle Ruhestandsplanung –<span class='spacer'></span><br /><span class='spacer'></span>Wir ermöglichen Ihnen Sorgenfreiheit im Ruhestand.
 link: /leistungen/honorarberatung
 
 ---

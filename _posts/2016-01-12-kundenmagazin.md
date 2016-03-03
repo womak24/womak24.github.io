@@ -3,7 +3,7 @@
 category: home
 icon: fa-info
 name: Kundenmagazin
-text: Unser regelmäßig erscheinendes Online-Kundenmagazin informiert Sie über aktuelle Entwicklungen in der Versicherungsbranche.
+text: Erfahren Sie in unserem Online-Kundenmagazin die neuesten Entwicklungen der Versicherungsbranche.
 link: /kundenmagazin/
 
 ---

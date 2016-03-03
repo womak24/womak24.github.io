@@ -3,7 +3,7 @@
 category: slider
 sliderclass: slider-analyse
 heading: Risikoanalyse &amp; Beratung
-text: Nennen Sie uns Ihr Risiko –<span class='spacer'></span><br /><span class='spacer'></span>Wir organisieren Ihren perfekten<span class='spacer'></span><br /><span class='spacer'></span>Versicherungsschutz.
+text: Wir ermitteln Ihr Risiko und bieten den perfekten Versicherungsschutz.
 link: /leistungen/risikoanalyse
 
 ---
