@@ -385,7 +385,7 @@ img.schaden-img {
   padding-left: 0px;
 
   dt {
-    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   dd img {
@@ -575,4 +575,61 @@ header {
   .secondary-footer-right { float: right; }
 }
 
-
+// Opening Hours
+.opening-hours {
+  &.hours {
+    background-image: url(../img/open/hours.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  &.monday {
+    background-image: url(../img/open/mon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+/*     &:hover {
+      background-image: url(../img/open/a-mon.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+    } */
+  }
+  &.tuesday {
+    background-image: url(../img/open/tue.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+/*     &:hover {
+      background-image: url(../img/open/a-tue.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+    } */
+  }
+  &.wednesday {
+    background-image: url(../img/open/wed.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+/*     &:hover {
+      background-image: url(../img/open/a-wed.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+    } */
+  }
+  &.thursday {
+    background-image: url(../img/open/thu.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+/*     &:hover {
+      background-image: url(../img/open/a-thu.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+    } */
+  }
+  &.friday {
+    background-image: url(../img/open/fri.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+/*     &:hover {
+      background-image: url(../img/open/a-fri.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+    } */
+  }
+}

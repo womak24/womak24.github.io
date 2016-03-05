@@ -25,7 +25,8 @@
             <dl class="dl-horizontal">
             {% for item in page.right-items %}
               <dt>{{ item.title }}</dt>
-              <dd style="background-image: url({{ site.baseurl }}/img/open/active-{{ item.img }}); background-size: cover;"><img src="{{ site.baseurl }}/img/open/{{ item.img }}"></dd>
+              <dd class="opening-hours {{ item.class }} hidden-xs hidden-sm"></dd>
+              <dd class="visible-xs-block visible-sm-block">{{ item.text }}</dd>
             {% endfor %}
             </dl>
           {% endif %}
