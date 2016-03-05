@@ -173,7 +173,12 @@ h2.slogan {
 .leistung {
   text-align: left;
 
-  .fa-circle { color: $brand-primary; }
+  .fa-circle {
+    color: $brand-primary;
+    &.orange {
+      color: $brand-success;
+    }
+  }
   .leistung-item { margin-bottom: $line-height-computed; }
   
   .leistung-item-content {
