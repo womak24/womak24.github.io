@@ -67,4 +67,29 @@ $(document).ready(function () {
             scrollTop: $("#navbar-toggle-button-id").offset().top
         }, 200); // zeit
     });
+
+
+    // PREVENTING SCROLL on GoogleMap
+    // https://github.com/kylelam/kylelam.github.io/blob/master/iframe.html
+    
+    // set the mouse events to none when doc is ready
+    $('#map').addClass('scrolloff');
+    
+    // lock it when mouse up
+    $('#overlay').on("mouseup",function(){
+        //somehow the mouseup event doesn't get call...
+        $('#map').addClass('scrolloff'); 
+    });
+
+    // when mouse down, set the mouse events free
+    $('#overlay').on("mousedown",function(){        
+        $('#map').removeClass('scrolloff');
+    });
+
+    // becuase the mouse up doesn't work...
+    $("#map").mouseleave(function () {
+
+      // set the pointer events to none when mouse leaves the map area             
+      $('#map').addClass('scrolloff');            
+    });
 });

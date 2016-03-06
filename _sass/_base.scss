@@ -580,6 +580,11 @@ header {
   .secondary-footer-right { float: right; }
 }
 
+// Google Maps Stuff
+.scrolloff {
+    pointer-events: none;
+}
+
 // Opening Hours
 .opening-hours {
   &.hours {
