@@ -60,7 +60,7 @@
             </ul>
           </li>
           <li {% if current[1] == 'qualitaet' %}class='active'{% endif %}><a href="/qualitaet/"><i class="fa fa-2x fa-certificate hidden-xs hidden-sm"></i> {{ site.navquali }}</a></li>
-          <li {% if current[1] == 'kindenmagazin' %}class='active'{% endif %}><a href="/kundenmagazin/"><i class="fa fa-2x fa-newspaper-o hidden-xs hidden-sm"></i> {{ site.navnews }}</a></li>
+          <li {% if current[1] == 'kundenmagazin' %}class='active'{% endif %}><a href="/kundenmagazin/"><i class="fa fa-2x fa-newspaper-o hidden-xs hidden-sm"></i> {{ site.navnews }}</a></li>
           <li class="dropdown {% if current[1] == 'kontakt' %}active{% endif %}">
             {% comment %} Desktop Version (menu on hover) {% endcomment %}
             <a href="/kontakt/" class="dropdown-toggle hidden-xs hidden-sm" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-paper-plane hidden-xs hidden-sm"></i> {{ site.navkontakt }}<span class="caret"></span></a>
