@@ -5,78 +5,73 @@ permalink: /schaden-melden/index.php
 ---
 {% raw %}
 <?php
-    // http://www.html-form-guide.com/email-form/php-email-form-attachment.html#pearinstall
-     function mail_att($to,$subject,$message,$attachments)
+    // Init
+    require 'PHPMailer/PHPMailerAutoload.php';
+    
+
+    // Email Daten Einstellungen
+    $from = 'kontakt@Womak24.de'; 
+    $to = 'hackberd@gmail.com'; // Ziel der Kontakt Emails
+    $subject = 'Schaden melden Womak24';
+    // Upload Einstellungen
+    $max_allowed_file_size = 3000; // size in KB
+    $allowed_extensions = array("jpg", "jpeg", "gif", "bmp", "png");
+   
+   function mail_att($to,$subject,$message,$attachments)
    {
-   $absender = "Schaden melden Womak24";
-   $absender_mail = "formular@womak.de";
-   $reply = "nicht-antworten@womak.de";
- 
-   $mime_boundary = "-----=" . md5(uniqid(mt_rand(), 1));
- 
-   $header  ="From:".$absender."<".$absender_mail.">\n";
-   $header .= "Reply-To: ".$reply."\n";
- 
-   $header.= "MIME-Version: 1.0\r\n";
-   $header.= "Content-Type: multipart/mixed;\r\n";
-   $header.= " boundary=\"".$mime_boundary."\"\r\n";
- 
-   $content = "This is a multi-part message in MIME format.\r\n\r\n";
-   $content.= "--".$mime_boundary."\r\n";
-   $content.= "Content-Type: text/html charset=\"iso-8859-1\"\r\n";
-   $content.= "Content-Transfer-Encoding: 8bit\r\n\r\n";
-   $content.= $message."\r\n";
- 
-   //$anhang ist ein Mehrdimensionals Array
-   //$anhang enthält mehrere Dateien
-   if(is_array($attachments) AND is_array(current($attachments)))
-      {
-      foreach($attachments AS $dat)
-         {
-         $data = chunk_split(base64_encode($dat['data']));
-         $content.= "--".$mime_boundary."\r\n";
-         $content.= "Content-Disposition: attachment;\r\n";
-         $content.= "\tfilename=\"".$dat['name']."\";\r\n";
-         $content.= "Content-Length: .".$dat['size'].";\r\n";
-         $content.= "Content-Type: ".$dat['type']."; name=\"".$dat['name']."\"\r\n";
-         $content.= "Content-Transfer-Encoding: base64\r\n\r\n";
-         $content.= $data."\r\n";
-         }
-      $content .= "--".$mime_boundary."--"; 
-      }
-   else //Nur 1 Datei als Anhang
-      {
-      $data = chunk_split(base64_encode($attachments['data']));
-      $content.= "--".$mime_boundary."\r\n";
-      $content.= "Content-Disposition: attachment;\r\n";
-      $content.= "\tfilename=\"".$attachments['name']."\";\r\n";
-      $content.= "Content-Length: .".$attachments['size'].";\r\n";
-      $content.= "Content-Type: ".$attachments['type']."; name=\"".$attachments['name']."\"\r\n";
-      $content.= "Content-Transfer-Encoding: base64\r\n\r\n";
-      $content.= $data."\r\n";
-      } 
-      
-    if(@mail($to, $subject, $content, $header)) return true;
-    else return false;
+     // SMTP-Server Einstellungen !!!!!!!!
+    $smtp_server = 'smtp.gmail.com';
+    $smtp_user = 'womakformular@gmail.com';
+    $smtp_passwort = 'jf092eioads12das';
+    $smtp_port = 587;
+    $smtp_verschluesselung = 'tls'; // 'ssl' auch moeglich   
+       
+       
+    $mail = new PHPMailer;
+
+    //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = $smtp_server;  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = $smtp_user;                 // SMTP username
+    $mail->Password = $smtp_passwort;                           // SMTP password
+    $mail->SMTPSecure = $smtp_verschluesselung;                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = $smtp_port;                                    // TCP port to connect to
+    $mail->setFrom($from, 'Womak Schaden melden Formular');
+    $mail->addAddress($to);               
+    $mail->addReplyTo('nicht-anrworten@womak24.de', 'Nicht antworten');
+       
+       if ($attachments) {
+            $mail->addAttachment($_FILES['picture']['tmp_name'], $_FILES['picture']['name']); 
+       }
+      // Optional name
+    $mail->isHTML(true);                                  // Set email format to HTML
+
+    $mail->Subject = $subject;
+    $mail->Body    = nl2br($message);
+    $mail->AltBody = strip_tags($message);
+
+        if(!$mail->send()) {
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            return false;
+        } else {
+            return true;
+        }
    }
 
 
     // https://bootstrapbay.com/blog/working-bootstrap-contact-form/
     error_reporting( error_reporting() & ~E_NOTICE );
-    $max_allowed_file_size = 3000; // size in KB
-    $allowed_extensions = array("jpg", "jpeg", "gif", "bmp");
+  
 
 
     if (isset($_POST["submit"])) {
         $name = $_POST['name'];
         $firm = $_POST['firm'];
         $email = $_POST['email'];
-        $message = $_POST['message'];
+        $messagecontent = $_POST['message'];
         $time = $_POST['time'];
         $human = intval($_POST['human']);
-
-        
-    
 
         if (!empty($_FILES['picture']['name'])) {
             // File, get infos
@@ -91,9 +86,6 @@ permalink: /schaden-melden/index.php
 
             $size_of_uploaded_file =
             $_FILES["picture"]["size"]/1024;//size in KBs
-
-            // Validate
-
 
             //Validations
             if($size_of_uploaded_file > $max_allowed_file_size )
@@ -116,26 +108,36 @@ permalink: /schaden-melden/index.php
             }
         }
         
-        // Settings
-        $from = 'kontakt@Womak24.de'; 
-        $to = 'hackberd@gmail.com'; 
-        $subject = 'Schaden melden Womak24';
+
         
-        
- 
+        $success_message = 'Folgende Daten wurden übermittelt:<br>';
+       
         // Check if name has been entered
         if (!$_POST['name']) {
             $errName = 'Bitte einen Namen angeben.';
+        } else {
+            $success_message .=  "Name: $name <br>";
         }
         
         // Check if email has been entered and is valid
         if (!$_POST['email']) {
             $errEmail = 'Bitte geben sie Kontaktdaten an.';
+        } else {
+            $success_message .= "Kontaktdaten: $email <br>";
         }
-        
+
+        // check firm
+        if ($_POST['firm']) {
+            $success_message .=  "Firma: $firm <br>";
+        }
         //Check if message has been entered
         if (!$_POST['message']) {
             $errMessage = 'Bitte geben sie eine Nachricht an';
+        } else {
+            $success_message .= "Nachricht: $messagecontent <br>";
+        }
+        if ($_POST['time']) {
+            $success_message .= "Schadenszeitpunkt: $time <br>";
         }
         //Check if simple anti-bot test is correct
         if ($human !== 5) {
@@ -150,16 +152,11 @@ permalink: /schaden-melden/index.php
 		    if(!empty($_FILES['picture']['name'])) {
                 if (!$errors) {
                     //echo "send att $errors";
-                    $attachments = array();
-				    $attachments["name"] = $_FILES['picture']['name']; 
-				    $attachments["size"] = $_FILES['picture']['size'];
-				    $attachments["type"] = $_FILES['picture']['type'];
-				    $attachments["data"] = implode("",file($_FILES['picture']['tmp_name']));
-
-                    $body = "Von: $name <br><br> Firma: $firm  <br><br> Schadenszeitpunkt: $time  <br><br> Kontakt: $email  <br><br>  Nachricht:  <br><br> $message";
+                    $success_message .= "Außerdem wurde ein Bild angehängt.<br>";
+                    $body = "Von: $name \r\n\r\n Firma: $firm\r\n\r\n Schadenszeitpunkt: $time\r\n\r\n Kontakt: $email\r\n\r\n Nachricht:\r\n\r\n $messagecontent \r\n\r\n ";
 
 
-				    $success = mail_att($to,$subject,$body,$attachments);
+				    $success = mail_att($to,$subject,$body,true);
                 } else {
                     //echo "no send";
                     $success = FALSE;
@@ -167,13 +164,20 @@ permalink: /schaden-melden/index.php
 		       
 		    } else {
                 //echo "send no att";
-                $body = "Von: $name \r\n\r\n Firma: $firm\r\n\r\n Schadenszeitpunkt: $time\r\n\r\n Kontakt: $email\r\n\r\n Nachricht:\r\n\r\n $message";
+                $body = "Von: $name \r\n\r\n Firma: $firm\r\n\r\n Schadenszeitpunkt: $time\r\n\r\n Kontakt: $email\r\n\r\n Nachricht:\r\n\r\n $messagecontent";
 
-		        $success = mail ($to, $subject, $body, $from);
+		        $success = mail_att($to,$subject,$body, false);
 		    }
 
 		    if ($success) {
-		        $result='<div class="alert alert-success">Vielen Dank! Wir werden Ihnen so schnell wie möglich antworten.</div>';
+		        $result='<div class="alert alert-success">Vielen Dank! Wir werden Ihnen so schnell wie möglich antworten.<br><br>' . $success_message . '</div>';
+                // Clear stuff
+                 $_POST['name'] = "";
+                $_POST['firm']= "";
+                $_POST['email']= "";
+                $_POST['message']= "";
+                $_POST['time']= "";
+                $_POST['human']= "";
 		    } else {
 		        $result='<div class="alert alert-danger">Es gab einen Fehler. Bitte überprüfen Sie ihre Eingaben.</div>';
    		    }
@@ -212,19 +216,18 @@ permalink: /schaden-melden/index.php
             </div>
             <div class="form-group required">
                 <label for="message" class="control-label">Kurze Schadensschilderung</label>
-                <textarea class="form-control" rows="4" name="message" id="message" required="required">{% raw %}
-                    <?php echo isset($_POST['message']) ? htmlspecialchars($_POST['message']) : '' ?> {% endraw %}</textarea>
+                <textarea class="form-control" rows="4" name="message" id="message" required="required">{% raw %}<?php echo isset($_POST['message']) ? htmlspecialchars($_POST['message']) : '' ?> {% endraw %}</textarea>
                 {% raw %}
                 <?php echo "<p class='text-danger'>$errMessage</p>";?> {% endraw %}
             </div>
             <div class="form-group">
-                <label for="picture" class="control-label">Foto vom Schaden</label>
-                <input type="file" class="form-control" id="picture" name="picture" value=""> {% raw %}
+                <label for="picture" class="control-label">Foto vom Schaden</label> Nur Bilder (jpg, jpeg, png, gif) und maximal 3MB
+                <input type="file" class="form-control" id="picture" name="picture" value=""  accept="image/jpeg,image/jpg,image/png,image/jpeg,image/gif" > {% raw %}
                 <?php echo "<p class='text-danger'>$errors</p>";?> {% endraw %}
             </div>
             <div class="form-group">
                 <label for="time" class="control-label">Schadenszeitpunkt</label>
-                <input type="datetime" class="form-control" id="time" name="time" placeholder="Zeitpunkt" value="{% raw %}<?php echo isset($_POST['time']) ? htmlspecialchars($_POST['time']) : '' ?> {% endraw %}">
+                <input type="date" class="form-control" id="time" name="time" placeholder="Zeitpunkt" value="{% raw %}<?php echo isset($_POST['time']) ? htmlspecialchars($_POST['time']) : '' ?> {% endraw %}">
             </div>
             <div class="form-group required">
                 <label for="human" class="control-label">2 + 3 = ?</label>
