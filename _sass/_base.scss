@@ -153,7 +153,7 @@ h2.slogan {
 .subside-img {
   background-position: center bottom;
   background-size: cover;
-  height: 9*$line-height-computed;
+  height: 6*$line-height-computed;
 }
 
 .subside-img-text {
@@ -396,10 +396,10 @@ img.schaden-img {
   dd img {
     width: 100%;
   }
+}
 
-  dd:hover img {
-    visibility: hidden;
-  }
+.subside-img {
+  height: 9 * $line-height-computed;
 }
 
 // Slider Arrows on Desktop Slider ist left and right
