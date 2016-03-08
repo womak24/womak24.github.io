@@ -7,10 +7,7 @@
 
 # Site settings
 title: Womak24 GmbH
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+description: Wir bieten Versicherungslösungen für Unternehmen in Berlin-Brandenburg. Hierbei überzeugen wir mit Qualifikation, Termintreue und Verlässlichkeit, was von unserer traditionell langjährigen Kundschaft sehr geschätzt wird. Sprechen Sie uns an – wir sind jederzeit für Sie da.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://www.womak24.de" # the base hostname & protocol for your site
 

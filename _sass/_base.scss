@@ -78,7 +78,7 @@ header {
 .navbar-btn { margin-left: 15px; }
 
 // helper class for putting distance between objects and buttons
-.btn-group { margin-top: $line-height-computed; }
+.btn-group { margin-top: $line-height-computed/2; }
 
 // Slogan
 
@@ -216,7 +216,7 @@ h2.slogan {
   h4 {
     color: $text-color;
     font-weight: bold;
-    padding-top: $line-height-computed;
+    //padding-top: $line-height-computed;
     padding-bottom: $line-height-computed/4;
 
     span {
