@@ -9,12 +9,12 @@
       <div class="panel-heading" role="tab" id="heading{{ post_index }}">
         <h3 class="panel-title">
           <ul class="fa-ul">
-            <li><i class="fa-li fa {{ post.icon }}"></i> {{ post.heading }}</li>
+            <li><i class="fa-li fa fa-fw {{ post.icon }}"></i>{{ post.heading }}&nbsp;<span class="caret"></span></li>
           </ul>
         </h3>
       </div>
     </a>
-    <div id="collapse{{ post_index }}" class="panel-collapse collapse {% if post_index == 1 %}in{% endif %}" role="tabpanel" aria-labelledby="heading{{ post_index }}">
+    <div id="collapse{{ post_index }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ post_index }}">
       <div class="panel-body">
         {{ post.text }}
       </div>
