@@ -187,8 +187,15 @@ permalink: /schaden-melden/index.php
 
 ?>
     {% endraw %}
+
+  <div style="background-image: url({{ site.baseurl }}/img/schaden-melden/sub.png);" class="subside-img">
     <div class="container">
-        <h1 class="slogan text-center">Schaden melden</h1>
+      <div class="subside-img-text"><span class="hidden-xs">Melden Sie online einen Versicherungsschaden.</span></div>
+    </div>
+  </div>
+      
+    <div class="container subside">
+        <h2>Schaden melden</h2>
         <form role="form" data-toggle="validator" method="post" action="index.php" enctype="multipart/form-data">
             <div class="form-group">
                 <div class="col-sm-10 col-sm-offset-2">
@@ -197,7 +204,7 @@ permalink: /schaden-melden/index.php
                 </div>
             </div>
             <div class="form-group required">
-                <label for="name" class="control-label">Name</label>
+                <label for="name" class="control-label">Name, Vorname</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Vor- und Nachname" value="{% raw %}<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '' ?> {% endraw %}" required="required"> {% raw %}
                 <?php if (isset($errName)) {
         echo "<p class='text-danger'>$errName</p>";
@@ -210,7 +217,7 @@ permalink: /schaden-melden/index.php
                 <input type="text" class="form-control" id="firm" name="firm" placeholder="Firma" value="{% raw %}<?php echo isset($_POST['firm']) ? htmlspecialchars($_POST['firm']) : '' ?> {% endraw %}">
             </div>
             <div class="form-group required">
-                <label for="email" class="control-label">Kontaktdaten für eine schnellste Kontaktaufnahme durch uns</label>
+                <label for="email" class="control-label">Ihre aktuelle Telefonnummer und/oder E-Mail-Adresse</label>
                 <input type="text" class="form-control" id="email" name="email" placeholder="Email oder Telefonnummer" value="{% raw %}<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?> {% endraw %}" required="required"> {% raw %}
                 <?php echo "<p class='text-danger'>$errEmail</p>";?> {% endraw %}
             </div>
@@ -232,6 +239,7 @@ permalink: /schaden-melden/index.php
             <div class="form-group required">
                 <label for="human" class="control-label">2 + 3 = ?</label>
                 <input type="text" class="form-control" id="human" name="human" placeholder="Ihre Antwort" required="required" value="{% raw %}<?php echo isset($_POST['human']) ? htmlspecialchars($_POST['human']) : '' ?> {% endraw %}"> {% raw %}
+                <span id="helpBlock" class="help-block">Tragen Sie das Ergebnis der Rechenaufgabe in das Feld ein.</span>
                 <?php echo "<p class='text-danger'>$errHuman</p>";?> {% endraw %}
             </div>
             <div class="form-group">
