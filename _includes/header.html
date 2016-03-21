@@ -44,19 +44,19 @@
             </p>
           </li>
           <li><a href="/" class="hidden-md hidden-lg">Startseite</a></li>
-          <li {% if current[1] == 'about' %}class='active'{% endif %}><a href="/about/"><i class="fa fa-2x fa-info hidden-xs hidden-sm"></i> {{ site.navabout }}</a></li>
-          <li class="dropdown {% if current[1] == 'leistungen' %}active{% endif %}">
+          <li {% if current[1] == 'ueber-uns' %}class='active'{% endif %}><a href="/ueber-uns/"><i class="fa fa-2x fa-info hidden-xs hidden-sm"></i> {{ site.navabout }}</a></li>
+          <li class="dropdown {% if current[1] == 'dienstleistungen' %}active{% endif %}">
             {% comment %} Desktop Version (menu on hover) {% endcomment %}
-            <a href="/leistungen/" class="dropdown-toggle hidden-xs hidden-sm" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs hidden-sm"></i> {{ site.navleistungen }} <span class="caret"></span></a>
+            <a href="/dienstleistungen/" class="dropdown-toggle hidden-xs hidden-sm" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs hidden-sm"></i> {{ site.navleistungen }} <span class="caret"></span></a>
             {% comment %} Mobile Version (menu on klick) {% endcomment %}
-            <a href="/leistungen/" class="visible-xs-block visible-sm-block dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs hidden-sm"></i> {{ site.navleistungen }} <span class="caret"></span></a>
+            <a href="/dienstleistungen/" class="visible-xs-block visible-sm-block dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-2x fa-cubes hidden-xs hidden-sm"></i> {{ site.navleistungen }} <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="/leistungen/risikoanalyse">{{ site.navrisiko }}</a></li>
-              <li><a href="/leistungen/immobilienvs">{{ site.navimmo }}</a></li>
-              <li><a href="/leistungen/multihpv">{{ site.navmulti }}</a></li>
-              <li><a href="/leistungen/lohnkostenoptimierung">{{ site.navlohn }}</a></li>
-              <li><a href="/leistungen/honorarberatung">{{ site.navhonorar }}</a></li>
-              <li><a href="/leistungen/weitere">{{ site.navweitere }}</a></li>
+              <li><a href="/dienstleistungen/risikoanalyse-und-beratung">{{ site.navrisiko }}</a></li>
+              <li><a href="/dienstleistungen/immobilienversicherungen">{{ site.navimmo }}</a></li>
+              <li><a href="/dienstleistungen/d-o-multihaftpflichtversicherung">{{ site.navmulti }}</a></li>
+              <li><a href="/dienstleistungen/lohnkostenoptimierung">{{ site.navlohn }}</a></li>
+              <li><a href="/dienstleistungen/beratung-altersvorsorge">{{ site.navhonorar }}</a></li>
+              <li><a href="/dienstleistungen/weitere-dienstleistungen">{{ site.navweitere }}</a></li>
             </ul>
           </li>
           <li {% if current[1] == 'qualitaet' %}class='active'{% endif %}><a href="/qualitaet/"><i class="fa fa-2x fa-certificate hidden-xs hidden-sm"></i> {{ site.navquali }}</a></li>
