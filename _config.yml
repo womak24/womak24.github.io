@@ -6,8 +6,8 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Womak24 GmbH
-description: Wir bieten Versicherungslösungen für Unternehmen in Berlin-Brandenburg. Hierbei überzeugen wir mit Qualifikation, Termintreue und Verlässlichkeit, was von unserer traditionell langjährigen Kundschaft sehr geschätzt wird. Sprechen Sie uns an – wir sind jederzeit für Sie da.
+title: Womak 24 GmbH Berlin – Brandenburg Versicherungsmakler
+description: "Wir bieten Versicherungslösungen für Unternehmen in Berlin-Brandenburg. Hierbei überzeugen wir mit Qualifikation, Termintreue und Verlässlichkeit, was von unserer traditionell langjährigen Kundschaft sehr geschätzt wird. Sprechen Sie uns an – wir sind jederzeit für Sie da."
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://www.womak24.de" # the base hostname & protocol for your site
 
