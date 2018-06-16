@@ -19,6 +19,7 @@
     <div class="container visible-xs-block">
       <ul class="list-unstyled">
         <li><a href="{{ site.baseurl }}/impressum">{{ site.navimpress }}</a></li>
+        <li><a href="{{ site.baseurl }}/erstinformation">{{ site.navfirstinfo }}</a></li>
         <li><a href="{{ site.baseurl }}/datenschutz">{{ site.navdata }}</a></li>
         <li><a href="{{ site.baseurl }}/widerrufsrecht">{{ site.navwiderruf }}</a></li>
       </ul>
@@ -31,6 +32,8 @@
     {% assign current = page.url | downcase | split: '/' %}
       <ul class="list-inline secondary-footer-right">
         <li {% if current[1] == 'impressum' %}class='active'{% endif %}><a href="{{ site.baseurl }}/impressum/">{{ site.navimpress }}</a></li>
+        <li>|</li>
+        <li  {% if current[1] == 'erstinformation' %}class='active'{% endif %}><a href="{{ site.baseurl }}/erstinformation/">{{ site.navfirstinfo }}</a></li>
         <li>|</li>
         <li  {% if current[1] == 'datenschutz' %}class='active'{% endif %}><a href="{{ site.baseurl }}/datenschutz/">{{ site.navdata }}</a></li>
         <li>|</li>
