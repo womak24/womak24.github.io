@@ -228,7 +228,7 @@ permalink: /schaden-melden/index.php
                 <?php echo "<p class='text-danger'>$errMessage</p>";?> {% endraw %}
             </div>
             <div class="form-group">
-                <label for="picture" class="control-label">Foto vom Schaden</label> Nur Bilder (jpg, jpeg, png, gif) und maximal 3MB
+                <label for="picture" class="control-label">Foto vom Schaden</label> Nur Bilder (jpg, jpeg, gif, bmp, png) und maximal 3MB
                 <input type="file" class="form-control" id="picture" name="picture" value=""  accept="image/jpeg,image/jpg,image/png,image/jpeg,image/gif" > {% raw %}
                 <?php echo "<p class='text-danger'>$errors</p>";?> {% endraw %}
             </div>
@@ -236,12 +236,7 @@ permalink: /schaden-melden/index.php
                 <label for="time" class="control-label">Schadenszeitpunkt</label>
                 <input type="date" class="form-control" id="time" name="time" placeholder="Zeitpunkt" value="{% raw %}<?php echo isset($_POST['time']) ? htmlspecialchars($_POST['time']) : '' ?> {% endraw %}">
             </div>
-            <div class="form-group required">
-                <label for="human" class="control-label">2 + 3 = ?</label>
-                <input type="text" class="form-control" id="human" name="human" placeholder="Ihre Antwort" required="required" value="{% raw %}<?php echo isset($_POST['human']) ? htmlspecialchars($_POST['human']) : '' ?> {% endraw %}"> {% raw %}
-                <span id="helpBlock" class="help-block">Tragen Sie das Ergebnis der Rechenaufgabe in das Feld ein.</span>
-                <?php echo "<p class='text-danger'>$errHuman</p>";?> {% endraw %}
-            </div>
+            <div class="g-recaptcha" data-sitekey="6Le9Y18UAAAAAFAwVwJ26-81y3A2SfILcLPDPWUQ"></div>
             <div class="form-group">
                 <input id="submit" name="submit" type="submit" value="Abschicken" class="btn btn-primary">
             </div>
