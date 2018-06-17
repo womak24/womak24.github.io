@@ -237,9 +237,18 @@ permalink: /schaden-melden/index.php
                 <input type="date" class="form-control" id="time" name="time" placeholder="Zeitpunkt" value="{% raw %}<?php echo isset($_POST['time']) ? htmlspecialchars($_POST['time']) : '' ?> {% endraw %}">
             </div>
             <div class="form-group g-recaptcha" data-sitekey="6Le9Y18UAAAAAFAwVwJ26-81y3A2SfILcLPDPWUQ"></div>
+            <div class="form-group required">
+                <div class="checkbox">
+                  <label>
+                      <input type="checkbox" required="required"> Ich habe die <a href="{{ site.baseurl }}/datenschutz"">Datenschutzerklärung</a> zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meiner Anfrage elektronisch erhoben und gespeichert werden.<br>
+                      <em>Hinweis:</em> Sie können Ihre Einwilligung jederzeit für die Zukunft per E-Mail an <script src='/js/email-plain.js'></script><noscript>Bitte Javascript aktivieren.</noscript> widerrufen.
+                  </label>
+                  {% raw %}
+                  <?php echo "<p class='text-danger'>$errMessage</p>";?> {% endraw %}
+                </div>
+            </div>
             <div class="form-group">
                 <input id="submit" name="submit" type="submit" value="Abschicken" class="btn btn-primary">
             </div>
-
         </form>
     </div>
