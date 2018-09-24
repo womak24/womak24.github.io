@@ -1,199 +1,195 @@
 ---
-layout: default 
-permalink: /schaden-melden/index.php 
-# http://jekyllrb.com/docs/permalinks/ 
+layout: default
+permalink: /schaden-melden/index.php
+# http://jekyllrb.com/docs/permalinks/
 ---
 {% raw %}
 <?php
-    // Init
-    require 'PHPMailer/PHPMailerAutoload.php';
-    
+  // email data settings
+  $fromMail = 'anfrage@womak24.de';
+  $fromName = 'Womak Schaden melden Formular';
+  $toMail = 'info@womak24.de'; // receiver of contact mail
+  $replyMail = 'nicht-antworten@womak24.de';
+  $replyName = 'Nicht antworten';
+  $subject = 'Schaden melden Womak24';
 
-    // Email Daten Einstellungen
-    $from = 'kontakt@Womak24.de'; 
-    $to = 'hackberd@gmail.com'; // Ziel der Kontakt Emails
-    $subject = 'Schaden melden Womak24';
-    // Upload Einstellungen
-    $max_allowed_file_size = 3000; // size in KB
-    $allowed_extensions = array("jpg", "jpeg", "gif", "bmp", "png");
-   
-   function mail_att($to,$subject,$message,$attachments)
-   {
-     // SMTP-Server Einstellungen !!!!!!!!
-    $smtp_server = 'smtp.gmail.com';
-    $smtp_user = 'womakformular@gmail.com';
-    $smtp_passwort = 'jf092eioads12das';
-    $smtp_port = 587;
-    $smtp_verschluesselung = 'tls'; // 'ssl' auch moeglich   
-       
-       
-    $mail = new PHPMailer;
+  // SMTP-server settings
+  $smtp_server = 'mail.flashdance-media.de'; // specify main SMTP server
+  $smtp_user = 'form-anfr@womak24.de';
+  $smtp_password = ''; // SMTP password TODO
+  $smtp_port = 465; // TCP port to connect to
+  $smtp_secure = 'ssl'; // enable SSL encryption
 
-    //$mail->SMTPDebug = 3;                               // Enable verbose debug output
-    $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = $smtp_server;  // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = $smtp_user;                 // SMTP username
-    $mail->Password = $smtp_passwort;                           // SMTP password
-    $mail->SMTPSecure = $smtp_verschluesselung;                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = $smtp_port;                                    // TCP port to connect to
-    $mail->setFrom($from, 'Womak Schaden melden Formular');
-    $mail->addAddress($to);               
-    $mail->addReplyTo('nicht-anrworten@womak24.de', 'Nicht antworten');
-       
-       if ($attachments) {
-            $mail->addAttachment($_FILES['picture']['tmp_name'], $_FILES['picture']['name']); 
-       }
-      // Optional name
-    $mail->isHTML(true);                                  // Set email format to HTML
+  // upload settings
+  $max_allowed_file_size = 3000; // size in KB
+  $allowed_extensions = array("jpg", "jpeg", "gif", "bmp", "png");
 
-    $mail->Subject = $subject;
-    $mail->Body    = nl2br($message);
-    $mail->AltBody = strip_tags($message);
+  // Init
+  require 'PHPMailer/PHPMailerAutoload.php';
 
-        if(!$mail->send()) {
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
-            return false;
-        } else {
-            return true;
+  function mail_att($message, $attachments) {
+    // declare global variables
+    global $fromMail, $fromName, $toMail, $replyMail, $replyName, $subject, $smtp_server, $smtp_user, $smtp_password, $smtp_port, $smtp_secure;
+
+    $mail = new PHPMailer(true); // passing `true` enables exceptions
+
+    try {
+      // set SMTP-server settings
+      // $mail->SMTPDebug = 3; // enable verbose debug output
+      $mail->isSMTP(); // set mailer to use SMTP
+      $mail->Host = $smtp_server;
+      $mail->SMTPAuth = true; // enable SMTP authentication
+      $mail->Username = $smtp_user;
+      $mail->Password = $smtp_password;
+      $mail->SMTPSecure = $smtp_secure;
+      $mail->Port = $smtp_port;
+
+      // set recipients
+      $mail->setFrom($fromMail, $fromName);
+      $mail->addAddress($toMail); // add a recipient without name
+      $mail->addReplyTo($replyMail, $replyName);
+      // $mail->addCC('cc@example.com');
+      // $mail->addBCC('bcc@example.com');
+
+      // attachments
+      if ($attachments) {
+        $mail->addAttachment($_FILES['picture']['tmp_name'], $_FILES['picture']['name']); // add attachments with name
+      }
+
+      // content
+      $mail->isHTML(true); // set email format to HTML
+      $mail->Subject = $subject;
+      $mail->Body    = nl2br($message); // body in HTML
+      $mail->AltBody = strip_tags($message); // body in plain text for non-HTML mail clients
+
+      $mail->send();
+
+      return true;
+    } catch (Exception $e) {
+      return false;
+    }
+  }
+
+  // https://bootstrapbay.com/blog/working-bootstrap-contact-form/
+  error_reporting(error_reporting() & ~E_NOTICE);
+
+  if (isset($_POST["submit"])) {
+    $name = $_POST['name'];
+    $firm = $_POST['firm'];
+    $email = $_POST['email'];
+    $messagecontent = $_POST['message'];
+    $time = $_POST['time'];
+
+    // submit file
+    if (!empty($_FILES['picture']['name'])) {
+      // get file infos
+      // get the uploaded file information
+      $name_of_uploaded_file = basename($_FILES['picture']['name']);
+      // get the file extension of the file
+      $type_of_uploaded_file = substr($name_of_uploaded_file, strrpos($name_of_uploaded_file, '.') + 1);
+      $size_of_uploaded_file = $_FILES["picture"]["size"]/1024; // size in KBs
+
+      // validations
+      if($size_of_uploaded_file > $max_allowed_file_size ) {
+        $file_errors .= "\n Die Größe des Bildes darf $max_allowed_file_size MB nicht überschreiten (Ist $size_of_uploaded_file)";
+      }
+
+      // file extension
+      $allowed_ext = false;
+      for($i = 0; $i < sizeof($allowed_extensions); $i++) {
+        if (strcasecmp($allowed_extensions[$i], $type_of_uploaded_file) == 0) {
+          $allowed_ext = true;
         }
-   }
-
-
-    // https://bootstrapbay.com/blog/working-bootstrap-contact-form/
-    error_reporting( error_reporting() & ~E_NOTICE );
-  
-
-
-    if (isset($_POST["submit"])) {
-        $name = $_POST['name'];
-        $firm = $_POST['firm'];
-        $email = $_POST['email'];
-        $messagecontent = $_POST['message'];
-        $time = $_POST['time'];
-        $human = intval($_POST['human']);
-
-        if (!empty($_FILES['picture']['name'])) {
-            // File, get infos
-            //Get the uploaded file information
-            $name_of_uploaded_file =
-            basename($_FILES['picture']['name']);
-
-            //get the file extension of the file
-            $type_of_uploaded_file =
-            substr($name_of_uploaded_file,
-            strrpos($name_of_uploaded_file, '.') + 1);
-
-            $size_of_uploaded_file =
-            $_FILES["picture"]["size"]/1024;//size in KBs
-
-            //Validations
-            if($size_of_uploaded_file > $max_allowed_file_size )
-            {
-                $errors .= "\n Die Größe des Bildes darf $max_allowed_file_size MB nicht überschreiten (Ist $size_of_uploaded_file)";
-            }
-
-            //------ Validate the file extension -----
-            $allowed_ext = false;
-            for($i=0; $i<sizeof($allowed_extensions); $i++) {
-                if (strcasecmp($allowed_extensions[$i],$type_of_uploaded_file) == 0)
-                {
-                $allowed_ext = true;
-                }
-            }
-
-            if(!$allowed_ext) {
-            $errors .= "\n Die hochgeladene Datei hat den falschen Dateityp. ".
-            " Nur die folgenden Dateitypen werden unterstützt: ".implode(',',$allowed_extensions);
-            }
-        }
-        
-
-        
-        $success_message = 'Folgende Daten wurden übermittelt:<br>';
-       
-        // Check if name has been entered
-        if (!$_POST['name']) {
-            $errName = 'Bitte einen Namen angeben.';
-        } else {
-            $success_message .=  "Name: $name <br>";
-        }
-        
-        // Check if email has been entered and is valid
-        if (!$_POST['email']) {
-            $errEmail = 'Bitte geben sie Kontaktdaten an.';
-        } else {
-            $success_message .= "Kontaktdaten: $email <br>";
-        }
-
-        // check firm
-        if ($_POST['firm']) {
-            $success_message .=  "Firma: $firm <br>";
-        }
-        //Check if message has been entered
-        if (!$_POST['message']) {
-            $errMessage = 'Bitte geben sie eine Nachricht an';
-        } else {
-            $success_message .= "Nachricht: $messagecontent <br>";
-        }
-        if ($_POST['time']) {
-            $success_message .= "Schadenszeitpunkt: $time <br>";
-        }
-        //Check if simple anti-bot test is correct
-        if ($human !== 5) {
-            $errHuman = 'Dies ist nicht die richtige Antwort';
-        }
-    
-
-		// If there are no errors, send the email
-		if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
-		    $success = FALSE;
-
-		    if(!empty($_FILES['picture']['name'])) {
-                if (!$errors) {
-                    //echo "send att $errors";
-                    $success_message .= "Außerdem wurde ein Bild angehängt.<br>";
-                    $body = "Von: $name \r\n\r\n Firma: $firm\r\n\r\n Schadenszeitpunkt: $time\r\n\r\n Kontakt: $email\r\n\r\n Nachricht:\r\n\r\n $messagecontent \r\n\r\n ";
-
-
-				    $success = mail_att($to,$subject,$body,true);
-                } else {
-                    //echo "no send";
-                    $success = FALSE;
-                }
-		       
-		    } else {
-                //echo "send no att";
-                $body = "Von: $name \r\n\r\n Firma: $firm\r\n\r\n Schadenszeitpunkt: $time\r\n\r\n Kontakt: $email\r\n\r\n Nachricht:\r\n\r\n $messagecontent";
-
-		        $success = mail_att($to,$subject,$body, false);
-		    }
-
-		    if ($success) {
-		        $result='<div class="alert alert-success">Vielen Dank! Wir werden Ihnen so schnell wie möglich antworten.<br><br>' . $success_message . '</div>';
-                // Clear stuff
-                 $_POST['name'] = "";
-                $_POST['firm']= "";
-                $_POST['email']= "";
-                $_POST['message']= "";
-                $_POST['time']= "";
-                $_POST['human']= "";
-		    } else {
-		        $result='<div class="alert alert-danger">Es gab einen Fehler. Bitte überprüfen Sie ihre Eingaben.</div>';
-   		    }
-
-		}
+      }
+      if(!$allowed_ext) {
+        $file_errors .= "\n Die hochgeladene Datei hat den falschen Dateityp. "." Nur die folgenden Dateitypen werden unterstützt: ".implode(',',$allowed_extensions);
+      }
     }
 
+    // check form
+    $success_message = 'Folgende Daten wurden übermittelt:<br>';
+    // check if name has been entered
+    if (!$_POST['name']) {
+      $errName = 'Bitte einen Namen angeben.';
+    } else {
+      $success_message .=  "Name: $name <br>";
+    }
+
+    // check if email has been entered and is valid
+    if (!$_POST['email']) {
+      $errEmail = 'Bitte geben sie Kontaktdaten an.';
+    } else {
+      $success_message .= "Kontaktdaten: $email <br>";
+    }
+
+    // check firm
+    if ($_POST['firm']) {
+      $success_message .=  "Firma: $firm <br>";
+    }
+
+    // check if message has been entered
+    if (!$_POST['message']) {
+      $errMessage = 'Bitte geben sie eine Nachricht an.';
+    } else {
+      $success_message .= "Nachricht: $messagecontent <br>";
+    }
+
+    if ($_POST['time']) { // TODO: not stored after wrong submit?
+      $success_message .= "Schadenszeitpunkt: $time <br>";
+    }
+
+    if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
+      //your site secret key
+      $secret = '6LdHo3EUAAAAAMWBk8t9hKf8ySCsOsYcKgINOmyq';
+      //get verify response data
+      $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+      $responseData = json_decode($verifyResponse);
+      if(!$responseData->success) {
+        $errCaptcha = 'Bitte beantworten Sie das ReCaptcha korrekt.';
+      }
+    } else {
+      $errCaptcha = 'Bitte beantworten Sie das ReCaptcha.';
+    }
+		// if there are no errors in form, send the email
+		if (!$errName && !$errEmail && !$errMessage && !$errCaptcha) {
+      $success = FALSE;
+
+      if(!empty($_FILES['picture']['name'])) {
+        if (!$file_errors) {
+          //echo "send att $file_errors";
+          $success_message .= "Außerdem wurde ein Bild angehängt.<br>";
+          $body = "Von: $name \r\n\r\n Firma: $firm\r\n\r\n Schadenszeitpunkt: $time\r\n\r\n Kontakt: $email\r\n\r\n Nachricht:\r\n\r\n $messagecontent \r\n\r\n ";
+          $success = mail_att($body, true);
+        } else {
+          $success = FALSE;
+        }
+      } else {
+        $body = "Von: $name \r\n\r\n Firma: $firm\r\n\r\n Schadenszeitpunkt: $time\r\n\r\n Kontakt: $email\r\n\r\n Nachricht:\r\n\r\n $messagecontent";
+        $success = mail_att($body, false);
+      }
+
+      if ($success) {
+        $result='<div class="alert alert-success">Vielen Dank! Wir werden Ihnen so schnell wie möglich antworten.<br><br>' . $success_message . '</div>';
+        // Clear stuff
+        $_POST['name'] = "";
+        $_POST['firm']= "";
+        $_POST['email']= "";
+        $_POST['message']= "";
+        $_POST['time']= "";
+      } else {
+        $result='<div class="alert alert-danger">Es gab einen Fehler. Bitte überprüfen Sie ihre Eingaben.</div>';
+      }
+    }
+  }
 ?>
-    {% endraw %}
+{% endraw %}
 
   <div style="background-image: url({{ site.baseurl }}/img/schaden-melden/sub.png);" class="subside-img">
     <div class="container">
       <div class="subside-img-text"><span class="hidden-xs">Melden Sie online einen Versicherungsschaden.</span></div>
     </div>
   </div>
-      
+
     <div class="container subside">
         <h2>Schaden melden</h2>
         <form role="form" data-toggle="validator" method="post" action="index.php" enctype="multipart/form-data">
@@ -208,7 +204,7 @@ permalink: /schaden-melden/index.php
                 <input type="text" class="form-control" id="name" name="name" placeholder="Vor- und Nachname" value="{% raw %}<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '' ?> {% endraw %}" required="required"> {% raw %}
                 <?php if (isset($errName)) {
         echo "<p class='text-danger'>$errName</p>";
-} 
+}
         ?>
                     {% endraw %}
             </div>
@@ -230,13 +226,14 @@ permalink: /schaden-melden/index.php
             <div class="form-group">
                 <label for="picture" class="control-label">Foto vom Schaden</label> Nur Bilder (jpg, jpeg, gif, bmp, png) und maximal 3MB
                 <input type="file" class="form-control" id="picture" name="picture" value=""  accept="image/jpeg,image/jpg,image/png,image/jpeg,image/gif" > {% raw %}
-                <?php echo "<p class='text-danger'>$errors</p>";?> {% endraw %}
+                <?php echo "<p class='text-danger'>$file_errors</p>";?> {% endraw %}
             </div>
             <div class="form-group">
                 <label for="time" class="control-label">Schadenszeitpunkt</label>
                 <input type="date" class="form-control" id="time" name="time" placeholder="Zeitpunkt" value="{% raw %}<?php echo isset($_POST['time']) ? htmlspecialchars($_POST['time']) : '' ?> {% endraw %}">
             </div>
-            <div class="form-group g-recaptcha" data-sitekey="6Le9Y18UAAAAAFAwVwJ26-81y3A2SfILcLPDPWUQ"></div>
+            <div class="form-group g-recaptcha" data-sitekey="6LdHo3EUAAAAAEja21E9cxMMk3jTnbauuPrdfWtH"></div>
+            {% raw %} <?php echo "<p class='text-danger'>$errCaptcha</p>";?> {% endraw %}
             <div class="form-group required">
                 <div class="checkbox">
                   <label>
