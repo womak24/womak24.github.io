@@ -1,0 +1,19 @@
+# block all crawlers
+User-agent: *
+# for impressum, erstinformation, datenschutz and widerrufsrecht
+Disallow: /impressum/
+Disallow: /erstinformation/
+Disallow: /datenschutz/
+Disallow: /widerrufsrecht/
+# following as well?
+Disallow: /footer/
+Disallow: /gruende/
+Disallow: /home/
+Disallow: /js/
+Disallow: /slider/
+Disallow: /browserconfig.xml
+Disallow: /feed.xml
+Disallow: /manifest.json
+Disallow: /*.png
+Disallow: /*.ico
+Disallow: /*.svg
