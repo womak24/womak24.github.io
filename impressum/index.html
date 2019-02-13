@@ -20,9 +20,9 @@ add: "Auf unsere Stärke und unser Engagement können Sie vertrauen."
 
   <h3>Kontakt</h3>
   <ul class="list-unstyled">
-    <li>Telefon: 03533 4826-0</li>
-    <li>Telefax: 03533 4722</li>
-    <li>E-Mail: info@womak24.de</li>
+    <li>Telefon: {{ site.telElsterwerda }}</li>
+    <li>Telefax: {{ site.faxElsterwerda }}</li>
+    <li>E-Mail: {{ site.mailWomak }}</li>
   </ul>
 
   <p>Wenn sie uns eine E-Mail zusenden, wird Ihre E-Mail-Adresse von uns, bis zum jederzeit möglichen Widerruf durch Sie, elektronisch gespeichert. Wir verweisen auf den Inhalt unserer <a href="/datenschutz/">Datenschutzerklärung</a>.<p>
@@ -52,10 +52,10 @@ add: "Auf unsere Stärke und unser Engagement können Sie vertrauen."
     <li>D-10178 Berlin</li>
   </ul>
   <ul class="list-unstyled">
-    <li>Telefon: 0 180 60 05 85 0<sup>*</sup></li>
-    <li>Fax: 030 20308-1000</li>
-    <li>E-Mail: vr@dihk.de</li>
-    <li><a href="http://www.vermittlerregister.info" target="blank">www.vermittlerregister.info<i class="fa fa-fw fa-external-link"></i></a></li>
+    <li>Telefon: {{ site.telDIHK }}<sup>*</sup></li>
+    <li>Fax: {{ site.faxDIHK }}</li>
+    <li>E-Mail: {{ site.mailVermittlerregisterDIHK }}</li>
+    <li><a href="{{ site.linkVermittlerregister }}" target="blank">{{ site.linkVermittlerregister }}<i class="fa fa-fw fa-external-link"></i></a></li>
   </ul>
 
   <p><sup>*</sup><small>Festnetzpreis 0,20&nbsp;€ pro Anruf; Mobilfunkpreise maximal 0,60&nbsp;€ pro Anruf</small></p>
@@ -70,37 +70,37 @@ add: "Auf unsere Stärke und unser Engagement können Sie vertrauen."
   <ul class="list-unstyled">
     <li>Ombudsmann für Versicherungen</li>
     <li>Leipziger Straße 121, 10117 Berlin</li>
-    <li><a href="https://www.versicherungsombudsmann.de" target="blank">www.versicherungsombudsmann.de <i class="fa fa-external-link"></i></a></li>
+    <li><a href="{{ site.linkVersicherungsombudsmann }}" target="blank">{{ site.linkVersicherungsombudsmann }} <i class="fa fa-external-link"></i></a></li>
   </ul>
 
   <ul class="list-unstyled">
     <li>Ombudsmann der privaten Bausparkassen</li>
     <li>Postfach 303079, 10730 Berlin</li>
-    <li><a href="https://www.bausparkassen.de" target="blank">www.bausparkassen.de <i class="fa fa-external-link"></i></a></li>
+    <li><a href="{{ site.linkBausparkassen }}" target="blank">{{ site.linkBausparkassen }} <i class="fa fa-external-link"></i></a></li>
   </ul>
 
   <ul class="list-unstyled">
     <li>Ombudsmann Private Kranken- und Pflegeversicherung</li>
     <li>Kronenstraße 13, 10117 Berlin</li>
-    <li><a href="https://www.pkv-ombudsmann.de" target="blank">www.pkv-ombudsmann.de <i class="fa fa-external-link"></i></a></li>
+    <li><a href="{{ site.linkPKVOmbudsmann }}" target="blank">{{ site.linkPKVOmbudsmann }} <i class="fa fa-external-link"></i></a></li>
   </ul>
 
   <ul class="list-unstyled">
     <li>Ombudsmann für Investmentfonds</li>
     <li>Büro der Ombudsstelle des BVI Bundesverband Investment und Asset Management e.V.</li>
     <li>Unter den Linden 42, 10117 Berlin</li>
-    <li><a href="https://www.ombudsstelle-investmentfonds.de" target="blank">www.ombudsstelle-investmentfonds.de <i class="fa fa-external-link"></i></a></li>
+    <li><a href="{{ site.linkOmbudsstelleInv }}" target="blank">{{ site.linkOmbudsstelleInv }} <i class="fa fa-external-link"></i></a></li>
   </ul>
 
   <ul class="list-unstyled">
     <li>Deutsche Bundesbank Schlichtungsstelle</li>
     <li>Postfach 11 12 32, 60047 Frankfurt am Main</li>
-    <li><a href="https://www.bundesbank.de/Navigation/DE/Service/Schlichtungsstelle/schlichtungsstelle.html" target="blank">www.bundesbank.de/Navigation/DE/Service/Schlichtungsstelle/schlichtungsstelle.html <i class="fa fa-external-link"></i></a></li>
+    <li><a href="{{ site.linkSchlichtungsstelle }}" target="blank">{{ site.linkSchlichtungsstelle }} <i class="fa fa-external-link"></i></a></li>
   </ul>
-  
+
 
   <h3>Plattform der EU-Kommission zur Online-Streitbeilegung</h3>
-  <p><a href="http://www.ec.europa.eu/consumers/odr" target="blank">www.ec.europa.eu/consumers/odr <i class="fa fa-external-link"></i></a></p>
+  <p><a href="{{ site.linkEukommission }}" target="blank">{{ site.linkEukommission }} <i class="fa fa-external-link"></i></a></p>
 
   <h3>Datenschutz</h3>
   <p>Unsere <a href="/datenschutz/">Datenschutzerklärung</a>.</p>
@@ -119,7 +119,7 @@ add: "Auf unsere Stärke und unser Engagement können Sie vertrauen."
 
   <h3>Aufsichtsbehörde</h3>
   <p>Die BaFin (Bundesanstalt für Finanzdienstleistungsaufsicht) ist eine einheitliche staatliche Allfinanzaufsicht für Kreditinstitute, Finanzdienstleistungsinstitute, Versicherungsunternehmen und den Wertpapierhandel mit Sitz in Frankfurt und Bonn.</p>
-  <p>Die BaFin-Seiten können Sie unter <a href="http://www.bafin.de" target="blank">www.bafin.de<i class="fa fa-fw fa-external-link"></i></a> aufrufen.</p>
+  <p>Die BaFin-Seiten können Sie unter <a href="{{ site.linkBafin }}" target="blank">{{ site.linkBafin }} <i class="fa fa-fw fa-external-link"></i></a> aufrufen.</p>
 
   <h3>Bildnachweis</h3>
   <div class="row">
@@ -150,9 +150,9 @@ add: "Auf unsere Stärke und unser Engagement können Sie vertrauen."
       <ul class="list-unstyled">
         <li>Juliane Bragulla</li>
         <li>04924 Bad Liebenwerda</li>
-        <li>+49 1522 4061421</li>
+        <li>{{ site.telJule }}</li>
         <li><script src='/js/email-jbragu.js'></script><noscript>Bitte Javascript aktivieren.</noscript></li>
-        <li><a href="http://julimage.de/">www.julimage.de<i class="fa fa-fw fa-external-link"></i></a></li>
+        <li><a href="{{ site.linkJulimage }}" target="blank">{{ site.linkJulimage }} <i class="fa fa-fw fa-external-link"></i></a></li>
       </ul>
     </div>
     <div class="col-md-6">
@@ -163,5 +163,5 @@ add: "Auf unsere Stärke und unser Engagement können Sie vertrauen."
         <li><script src='/js/email-aschle.js'></script><noscript>Bitte Javascript aktivieren.</noscript></li>
       </ul>
     </div>
-  </div>  
+  </div>
 </div>
