@@ -33,3 +33,9 @@ navwiderruf: Widerrufsrecht
 navschaden: Schaden melden
 navelsterwerda: Hauptsitz Elsterwerda
 navberlin: Servicebüro Berlin
+
+# telephone numbers
+# change when needed as well in _posts footer-kontakt, kontakt
+telElsterwerda: +49 (0)3533 4826-0
+faxElsterwerda: +49 (0)3533 4722
+telBerlin: +49 (0)30 61202961
