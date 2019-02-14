@@ -2,7 +2,7 @@
   <div class="container">
     <span class="pull-left text-uppercase">Ihr Berlin-Brandenburg Versicherungsmakler</span>
     <a href="/schaden-melden/index.php" class="btn btn-success btn-sm navbar-btn"><i class="fa fa-fw fa-bolt"></i>Schaden melden</a>
-    <a href="tel:0049353348260" class="btn btn-info btn-sm navbar-btn"><i class="fa fa-phone"></i> 03533 48260</a>
+    <a href="tel:{{ site.telElsterwerda }}" class="btn btn-info btn-sm navbar-btn"><i class="fa fa-phone"></i>  {{ site.telElsterwerda }}</a>
     <script src="{{ site.baseurl }}/js/email-header.js"></script><noscript></noscript>
   </div>
 </header>
@@ -27,14 +27,14 @@
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-txt">MENÜ</span><i class="fa fa-lg fa-bars"></i>
         </button>
-        <a href="/schaden-melden/index.php" class="btn btn-success btn-sm navbar-btn visible-xs-inline-block visible-sm-inline-block"><i class="fa fa-bolt"></i> Schaden melden</a> 
+        <a href="/schaden-melden/index.php" class="btn btn-success btn-sm navbar-btn visible-xs-inline-block visible-sm-inline-block"><i class="fa fa-bolt"></i> Schaden melden</a>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li class="visible-xs-block visible-sm-block">
             <p class="navbar-btn">
-              <a href="tel:0049353348260" class="btn btn-info btn-sm"><i class="fa fa-phone"></i> 03533 48260</a>
+              <a href="tel:{{ site.telElsterwerda }}" class="btn btn-info btn-sm"><i class="fa fa-phone"></i>  {{ site.telElsterwerda }}</a>
             </p>
           </li>
           <li class="visible-xs-block visible-sm-block">
