@@ -643,3 +643,51 @@ header {
     } */
   }
 }
+
+// 2Click-Iframe-Privacy
+
+.map-container {
+  height: 260px;
+}
+
+div.privacy-msg {
+  background-color: $brand-primary;
+}
+
+div.privacy-msg p {
+  color: $brand-info;
+  padding: 26px;
+  text-align:center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+div.privacy-msg .link {
+  color: $brand-info;
+}
+
+div.privacy-msg .btn-success {
+  margin-top: 13px;
+}
+
+@media (max-width: 400px) {
+
+  .map-container {
+    min-height: 260px;
+  }
+
+  div.privacy-msg {
+    background-color: $brand-primary;
+    height: 500px!important;
+    float: left;
+  }
+
+  div.privacy-msg p {
+    padding: 26px;
+    top: 0;
+    left: 0;
+    transform: translate(0);
+  }
+}
